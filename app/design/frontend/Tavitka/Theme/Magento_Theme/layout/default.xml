@@ -1,0 +1,48 @@
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="logo">
+            <arguments>
+                <argument name="logo_file" xsi:type="string">images/logo.svg</argument>
+                <argument name="logo_img_width" xsi:type="number">170</argument>
+                <argument name="logo_img_height" xsi:type="number">41</argument>
+            </arguments>
+        </referenceBlock>
+
+        <referenceContainer name="header.panel" label="Page Header Panel" htmlTag="div" htmlClass="panel header" remove="true"/>
+
+        <referenceContainer name="header.container">
+            <container name="header.top.wrapper" label="Page Header Top Wrapper" htmlTag="div" htmlClass="header-top__inner" before="-">
+                <block class="Magento\Framework\View\Element\Template" name="header.top" template="Magento_Theme::html/headerTop.phtml" />
+            </container>
+
+            <referenceContainer name="header-wrapper">
+                <container name="header.main.container" label="Page Header Main Container" htmlTag="div" htmlClass="container">
+                    <container name="header.main.inner" label="Page HeaderMain Inner" htmlTag="div" htmlClass="header-content__inner">
+                        <container name="custom.top.links" label="Custom Header Top Links" as="custom.top.links" htmlTag="ul" htmlClass="header-main__links">
+                        </container>
+                    </container>
+                </container>
+            </referenceContainer>
+
+
+        </referenceContainer>
+
+        <move element="nav.toggle" destination="header.main.inner" before="-"/>
+        <move element="logo" destination="header.main.inner" after="nav.toggle" />
+        <move element="top.search" destination="header.main.inner" after="logo" />
+        <move element="catalog.compare.link" destination="header.main.inner" after="top.search" />
+        <move element="custom.top.links" destination="header.main.inner" after="catalog.compare.link"/>
+
+        <move element="authorization-link" destination="custom.top.links" before="-"/>
+        <move element="wish-list-link" destination="custom.top.links" after="authorization-link"/>
+        <move element="minicart" destination="custom.top.links" after="wish-list-link" />
+
+        <container name="header.nav.wrapper" label="Page Header Nav Wrapper" htmlTag="div" htmlClass="header-nav__wrapper" >
+            <container name="header.nav.container" label="Page Header Nav Container" htmlTag="div" htmlClass="container" />
+        </container>
+        <move element="header.nav.wrapper" destination="page.top" before="-"/>
+        <move element="navigation.sections" destination="header.nav.container" before="store_language"/>
+        <move element="store_language" destination="header.nav.container" before="-"/>
+
+    </body>
+</page>

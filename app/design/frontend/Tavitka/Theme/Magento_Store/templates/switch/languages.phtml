@@ -1,0 +1,56 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+/** @var \Magento\Store\Block\Switcher $block */
+?>
+
+<?php if(count($this->getStores())>1): ?>
+    <div class="langs">
+        <?php if ($this->getCurrentStoreCode() != 'default'): ?>
+            <button class="langs__current" id="langs-open-btn" data-mage-init='{"toggleAdvanced": {"selectorsToggleClass": "active", "toggleContainers": "#modal-langs, #langs-overlay"}}'>
+                <img class="langs__current-icon" src="<?php echo $this->getViewFileUrl('images/flags/flag_' . $this->getCurrentStoreCode() . '.svg');?>" alt="<?php echo 'could not find image for ' . $this->getName() ?>"/>
+                <span class="langs__current-code"><?php echo $this->escapeHtml($this->getCurrentStoreCode()) ?></span>
+            </button>
+        <?php endif;?>
+
+        <div class="langs__list-wrapper" id="modal-langs">
+            <button class="langs__list-close-btn" id="langs-close-btn" data-mage-init='{"toggleAdvanced": {"selectorsToggleClass": "active", "toggleContainers": "#modal-langs, #langs-overlay"}}'>&times;</button>
+            <a class="langs__list-logo" href="https://ddev-magento2.ddev.site/index.php/en/" title="" aria-label="store logo">
+                <img src="https://ddev-magento2.ddev.site/static/version1659533145/frontend/Tavitka/Theme/en_US/images/logo_blue.svg" title="" alt="">
+            </a>
+            <span class="langs__list-subtitle">Choose your bol.com</span>
+            <h3 class="langs__list-title">How do you want to use bol.com?</h3>
+            <p class="langs__list-desc">Language / Taal</p>
+
+            <ul class="langs__list">
+            <?php foreach ($this->getStores() as $_lang): ?>
+                <?php if ($_lang->getCode() != 'default'): ?>
+                     <li class="langs__list-item">
+                        <a class="langs__list-link" href="<?= $block->escapeUrl($block->getViewModel()->getTargetStoreRedirectUrl($_lang)) ?>">
+                            <span class="langs__list-code"><?php echo $block->escapeHtml($_lang->getName()) ?></span>
+                            <img class="langs__list-icon" src="<?php echo $this->getViewFileUrl('images/flags/flag_' . $_lang->getCode() . '.svg');?>" alt="<?php echo 'could not find image for ' . $_lang->getName() ?>"/>
+                        </a>
+                    </li>
+                <?php endif;?>
+            <?php endforeach;?>
+        </ul>
+        </div>
+        <div id="langs-overlay" data-mage-init='{"toggleAdvanced": {"selectorsToggleClass": "active", "baseToggleClass": "", "toggleContainers": "#modal-langs, #langs-overlay"}}'></div>
+    </div>
+<?php endif;?>
+<!--<script type="text/x-magento-init">-->
+<!--    {-->
+<!--    "*": {-->
+<!--        "Magento_Ui/js/core/app": {-->
+<!--            "components": {-->
+<!--                "languagesPopUp": {-->
+<!--                   "component": "js/languages"-->
+<!--                }-->
+<!--            }-->
+<!--        }-->
+<!--    }-->
+<!--}-->
+<!--</script>-->

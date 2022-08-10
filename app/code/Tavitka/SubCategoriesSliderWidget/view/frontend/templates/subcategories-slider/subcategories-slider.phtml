@@ -1,0 +1,35 @@
+<?php
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$catId = 41;  //Parent Category ID
+$subCategory = $objectManager->create('Magento\Catalog\Model\Category')->load($catId);
+$subCats = $subCategory->getChildrenCategories();
+$_helper = $this->helper('Magento\Catalog\Helper\Output');
+?>
+<h2 class="main-slider__title">Choose a category</h2>
+<ul class="main-slider-subcat">
+    <?php
+    foreach ($subCats as $subcat) {
+        $_category = $objectManager->create('Magento\Catalog\Model\Category')->load($subcat->getId());
+        $subcaturl = $subcat->getUrl();
+        $_imgUrl = $_category->getImageUrl();
+        ?>
+        <li class="main-slider-subcat__item">
+            <a class="main-slider-subcat__link" href="<?php echo $subcaturl ?>">
+                <img class="main-slider-subcat__image" src="<?php echo $_imgUrl ?>" alt="subcategory image of <?php echo $subcat->getName(); ?>" >
+                <h3 class="main-slider-subcat__title"><?php echo $subcat->getName(); ?></h3>
+            </a>
+        </li>
+    <?php } ?>
+</ul>
+<script>
+    require(['jquery',  'slick'], function($, slick) {
+        $(document).ready(function() {
+            $(".main-slider-subcat").slick({
+                slidesToShow: 8,
+                slidesToScroll: 8,
+                infinite: false,
+                speed: 500,
+            });
+        });
+    });
+</script>
