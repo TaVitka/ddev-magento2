@@ -2,7 +2,7 @@
     &__items {
         display: flex;
         justify-content: space-between;
-        align-items: center;
+        align-items: baseline;
     }
     &__item {
         max-width: 180px;
@@ -32,6 +32,36 @@
                 background-color: @accentblue-light;
                 border-color: @accentblue-light;
             }
+        }
+        &-name {
+            height: 40px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            margin-bottom: 5px;
+        }
+        &-link {
+            color: @title-dark;
+            line-height: 1.5;
+            font-weight: 600;
+        }
+
+        &-link:hover {
+            color: @title-dark;
+        }
+
+        & .price-box {
+            padding-bottom: 10px;
+        }
+
+        & .price-label {
+            color: @accentred-brigth;
+            line-height: 1.2;
+            font-weight: 600;
+        }
+
+        & .price {
+            color: @accentred;
+            line-height: 1.5;
         }
     }
 

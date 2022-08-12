@@ -85,3 +85,30 @@
         left: 0;
     }
 }
+
+.pagebuilder-column.main-spesial__wrapper {
+    flex-direction: row;
+}
+
+.main-spesial{
+    &__wrapper  {
+        display: flex;
+        flex-direction: row;
+    }
+    &__wrapper:last-child {
+        background-color: #ffb073;
+    }
+
+    &__content {
+        max-width: 235px;
+        width: 100%;
+    }
+
+    &__pic {
+        flex-grow: 1;
+        & .pagebuilder-banner-wrapper {
+            height: 100%;
+            background-position-x: 20%;
+        }
+    }
+}
