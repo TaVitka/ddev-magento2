@@ -44,5 +44,186 @@
         <move element="navigation.sections" destination="header.nav.container" before="store_language"/>
         <move element="store_language" destination="header.nav.container" before="-"/>
 
+
+
+        <referenceContainer name="footer-container">
+            <block class="Magento\Framework\View\Element\Template" name="footer.top" template="Magento_Theme::html/footerTop.phtml" />
+
+            <referenceContainer name="footer">
+                <referenceBlock class="Magento\Framework\View\Element\Html\Links" name="footer_links">
+                    <arguments>
+                        <argument name="css_class" xsi:type="string">footer links</argument>
+                    </arguments>
+
+                    <block class="Magento\Framework\View\Element\Html\Link\Current" name="customer-service-link">
+                        <arguments>
+                            <argument name="label" xsi:type="string" translate="true">Customer service</argument>
+                            <argument name="path" xsi:type="string">#</argument>
+                        </arguments>
+                    </block>
+
+                    <referenceBlock class="Magento\Framework\View\Element\Html\Link\Current" name="contact-us-link">
+                        <arguments>
+                            <argument name="label" xsi:type="string" translate="true">Contact</argument>
+                            <argument name="path" xsi:type="string">contact</argument>
+                        </arguments>
+                    </referenceBlock>
+
+                    <block class="Magento\Framework\View\Element\Html\Link\Current" name="order-and-delivery-link">
+                        <arguments>
+                            <argument name="label" xsi:type="string" translate="true">Order &amp; Delivery</argument>
+                            <argument name="path" xsi:type="string">#</argument>
+                        </arguments>
+                    </block>
+
+                    <block class="Magento\Framework\View\Element\Html\Link\Current" name="pay-link">
+                        <arguments>
+                            <argument name="label" xsi:type="string" translate="true">Pay</argument>
+                            <argument name="path" xsi:type="string">#</argument>
+                        </arguments>
+                    </block>
+
+                    <block class="Magento\Framework\View\Element\Html\Link\Current" name="returns-link">
+                        <arguments>
+                            <argument name="label" xsi:type="string" translate="true">Returns</argument>
+                            <argument name="path" xsi:type="string">#</argument>
+                        </arguments>
+                    </block>
+
+                    <block class="Magento\Framework\View\Element\Html\Link\Current" name="warranty-and-repair-link">
+                        <arguments>
+                            <argument name="label" xsi:type="string" translate="true">Warranty &amp; Repair</argument>
+                            <argument name="path" xsi:type="string">#</argument>
+                        </arguments>
+                    </block>
+                </referenceBlock>
+
+                <block class="Magento\Framework\View\Element\Html\Links" name="footer_links_second">
+                    <arguments>
+                        <argument name="css_class" xsi:type="string">footer links</argument>
+                    </arguments>
+                    <block class="Magento\Framework\View\Element\Html\Link\Current" name="about-us-link">
+                        <arguments>
+                            <argument name="label" xsi:type="string" translate="true">About bol.com</argument>
+                            <argument name="path" xsi:type="string">#</argument>
+                        </arguments>
+                    </block>
+
+                    <block class="Magento\Framework\View\Element\Html\Link\Current" name="benefits-link">
+                        <arguments>
+                            <argument name="label" xsi:type="string" translate="true">The benefits of bol.com</argument>
+                            <argument name="path" xsi:type="string">#</argument>
+                        </arguments>
+                    </block>
+
+                    <block class="Magento\Framework\View\Element\Html\Link\Current" name="news-link">
+                        <arguments>
+                            <argument name="label" xsi:type="string" translate="true">News</argument>
+                            <argument name="path" xsi:type="string">#</argument>
+                        </arguments>
+                    </block>
+
+                    <block class="Magento\Framework\View\Element\Html\Link\Current" name="working-at-link">
+                        <arguments>
+                            <argument name="label" xsi:type="string" translate="true">Working at bol.com</argument>
+                            <argument name="path" xsi:type="string">#</argument>
+                        </arguments>
+                    </block>
+
+                    <block class="Magento\Framework\View\Element\Html\Link\Current" name="sustainability-link">
+                        <arguments>
+                            <argument name="label" xsi:type="string" translate="true">Bol.com &amp; sustainability</argument>
+                            <argument name="path" xsi:type="string">#</argument>
+                        </arguments>
+                    </block>
+
+                    <block class="Magento\Framework\View\Element\Html\Link\Current" name="app-link">
+                        <arguments>
+                            <argument name="label" xsi:type="string" translate="true">The bol.com app</argument>
+                            <argument name="path" xsi:type="string">#</argument>
+                        </arguments>
+                    </block>
+
+                    <block class="Magento\Framework\View\Element\Html\Link\Current" name="company-details-link">
+                        <arguments>
+                            <argument name="label" xsi:type="string" translate="true">Company details</argument>
+                            <argument name="path" xsi:type="string">#</argument>
+                        </arguments>
+                    </block>
+                </block>
+
+                <block class="Magento\Framework\View\Element\Html\Links" name="footer_links_third">
+                    <arguments>
+                        <argument name="css_class" xsi:type="string">footer links</argument>
+                    </arguments>
+
+                    <block class="Magento\Framework\View\Element\Html\Link\Current" name="doing-business-link">
+                        <arguments>
+                            <argument name="label" xsi:type="string" translate="true">Doing business with bol.com</argument>
+                            <argument name="path" xsi:type="string">#</argument>
+                        </arguments>
+                    </block>
+
+                    <block class="Magento\Framework\View\Element\Html\Link\Current" name="business-selling-link">
+                        <arguments>
+                            <argument name="label" xsi:type="string" translate="true">Business selling</argument>
+                            <argument name="path" xsi:type="string">#</argument>
+                        </arguments>
+                    </block>
+
+                    <block class="Magento\Framework\View\Element\Html\Link\Current" name="business-order-link">
+                        <arguments>
+                            <argument name="label" xsi:type="string" translate="true">Business order</argument>
+                            <argument name="path" xsi:type="string">#</argument>
+                        </arguments>
+                    </block>
+
+                    <block class="Magento\Framework\View\Element\Html\Link\Current" name="business-gift-cards-link">
+                        <arguments>
+                            <argument name="label" xsi:type="string" translate="true">Business Gift Cards</argument>
+                            <argument name="path" xsi:type="string">#</argument>
+                        </arguments>
+                    </block>
+
+                    <block class="Magento\Framework\View\Element\Html\Link\Current" name="advertise-link">
+                        <arguments>
+                            <argument name="label" xsi:type="string" translate="true">To advertise</argument>
+                            <argument name="path" xsi:type="string">#</argument>
+                        </arguments>
+                    </block>
+
+                    <block class="Magento\Framework\View\Element\Html\Link\Current" name="affiliate-marketing-link">
+                        <arguments>
+                            <argument name="label" xsi:type="string" translate="true">Affiliate Marketing</argument>
+                            <argument name="path" xsi:type="string">#</argument>
+                        </arguments>
+                    </block>
+
+                    <block class="Magento\Framework\View\Element\Html\Link\Current" name="suppliers-link">
+                        <arguments>
+                            <argument name="label" xsi:type="string" translate="true">Suppliers</argument>
+                            <argument name="path" xsi:type="string">#</argument>
+                        </arguments>
+                    </block>
+                </block>
+
+                <block class="Magento\Framework\View\Element\Template" name="footer.socials" template="Magento_Theme::html/footerSocials.phtml" />
+            </referenceContainer>
+
+            <block class="Magento\Framework\View\Element\Template" name="footer.bottom" template="Magento_Theme::html/footerBottom.phtml"></block>
+
+        </referenceContainer>
+
+        <move element="footer.top" destination="footer-container" before="footer" />
+        <referenceBlock name="store_switcher" remove="true"/>
+        <referenceBlock name="form.subscribe" remove="true"/>
+        <referenceBlock name="privacy-policy-link" remove="true"/>
+        <referenceBlock name="search-term-popular-link" remove="true"/>
+        <referenceBlock name="catalog-search-advanced-link" remove="true"/>
+        <referenceBlock name="sales-guest-form-link" remove="true"/>
+        <move element="contact-us-link" destination="footer_links" after="customer-service-link"/>
+
+
+
     </body>
 </page>

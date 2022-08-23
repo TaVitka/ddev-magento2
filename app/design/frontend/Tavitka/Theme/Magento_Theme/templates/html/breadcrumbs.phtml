@@ -1,0 +1,34 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+?>
+<?php if ($crumbs && is_array($crumbs)) : ?>
+<div class="breadcrumbs">
+    <ul class="items">
+        <li class="item back">
+            <a class="item-link--back" href="javascript:history.go(-1)" title="back">Retour</a>
+        </li>
+        <?php foreach ($crumbs as $crumbName => $crumbInfo) : ?>
+            <li class="item <?= $block->escapeHtmlAttr($crumbName) ?>">
+            <?php if ($crumbInfo['first']) : ?>
+                <a href="<?= $block->escapeUrl($crumbInfo['link']) ?>"
+                   title="<?= $block->escapeHtml($crumbInfo['title']) ?>">
+                    <svg width="18px" height="18px" viewBox="0 0 14 14">
+                        <path fill-rule="evenodd" d="M11.013 12.032L8.5 12V9.5l-3-.009V12l-2.541-.007L3 6.4l4-4 4 4 .013 5.632zM12 6L6.982 1 2 6v7h4.5v-2.398h1V13H12V6z"></path>
+                    </svg>
+                </a>
+            <?php elseif ($crumbInfo['link'] || $crumbInfo['last']) : ?>
+                <a href="<?= $block->escapeUrl($crumbInfo['link']) ?>"
+                   title="<?= $block->escapeHtml($crumbInfo['title']) ?>">
+                    <?= $block->escapeHtml($crumbInfo['label']) ?>
+                </a>
+            <?php else : ?>
+                <?= $block->escapeHtml($crumbInfo['label']) ?>
+            <?php endif; ?>
+            </li>
+        <?php endforeach; ?>
+    </ul>
+</div>
+<?php endif; ?>

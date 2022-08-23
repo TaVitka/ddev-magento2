@@ -1,0 +1,27 @@
+a:4:{s:4:"hash";s:0:"";s:5:"mtime";i:1661262516;s:6:"expire";i:1661348916;s:4:"tags";s:150:"69d_BLOCK_HTML,69d_CAT_P_46,69d_CAT_P,69d_CAT_P_26,69d_CAT_P_29,69d_CAT_P_32,69d_CAT_P_21,69d_CAT_P_33,69d_CAT_P_34,69d_CAT_P_35,69d_CAT_P_22,69d_MAGE";}
+<div class="price-box price-final_price" data-role="priceBox" data-product-id="46" data-price-box="product-id-46">
+            <p class="price-from">
+            
+
+<span class="price-container price-final_price&#x20;tax&#x20;weee"
+        >
+            <span class="price-label">Van</span>
+        <span  id="old-price-46-widget-product-grid"                data-price-amount="59.81"
+        data-price-type="minPrice"
+        class="price-wrapper "
+    ><span class="price">€ 59,81</span></span>
+        </span>
+                    </p>
+        <p class="price-to">
+            
+
+<span class="price-container price-final_price&#x20;tax&#x20;weee"
+        >
+            <span class="price-label">Aan</span>
+        <span  id="old-price-46-widget-product-grid"                data-price-amount="75.5"
+        data-price-type="maxPrice"
+        class="price-wrapper "
+    ><span class="price">€ 75,50</span></span>
+        </span>
+                    </p>
+    </div>
