@@ -12,36 +12,84 @@
 $viewModel = $block->getData('product_layer_view_model');
 ?>
 
-<ol class="items">
-    <?php foreach ($filterItems as $filterItem): ?>
-        <li class="item">
-            <?php if ($filterItem->getCount() > 0): ?>
-                <a
-                    href="<?= $escaper->escapeUrl($filterItem->getUrl()) ?>"
-                    rel="nofollow"
-                ><?= /* @noEscape */ $filterItem->getLabel() ?><?php
-                if ($viewModel->shouldDisplayProductCountOnLayer()): ?><span
-                        class="count"><?= /* @noEscape */ (int) $filterItem->getCount() ?><span
-                            class="filter-count-label"><?php
-                            if ($filterItem->getCount() == 1): ?>
-                                <?= $escaper->escapeHtml(__('item')) ?><?php
-                            else:
-                                ?><?= $escaper->escapeHtml(__('item')) ?><?php
-                            endif;?></span></span>
-                    <?php endif; ?></a>
-            <?php elseif($filterItem > 3): ?>
-            <?php else: ?>
-                <?= /* @noEscape */ $filterItem->getLabel() ?><?php
-                if ($viewModel->shouldDisplayProductCountOnLayer()): ?><span
-                        class="count"><?= /* @noEscape */ (int) $filterItem->getCount() ?><span
-                            class="filter-count-label"><?php
+
+    <?php if(count($filterItems) > 3): ?>
+        <?php foreach ($filterItems as $filterItem): ?>
+            <ol class="items items--long">
+                <li class="item item--long">
+                    <?php if ($filterItem->getCount() > 0): ?>
+                    <label class="item-label">
+                        <input class="item-btn" type="checkbox" onclick='window.location.assign("<?= $escaper->escapeUrl($filterItem->getUrl()) ?>")'>
+                        <a href="<?= $escaper->escapeUrl($filterItem->getUrl()) ?>"
+                           rel="nofollow">
+                                <?= /* @noEscape */ $filterItem->getLabel() ?><?php
+                            if ($viewModel->shouldDisplayProductCountOnLayer()): ?><span
+                                class="count"><?= /* @noEscape */ (int) $filterItem->getCount() ?><span
+                                    class="filter-count-label"><?php
+                                if ($filterItem->getCount() == 1): ?>
+                                    <?= $escaper->escapeHtml(__('item')) ?><?php
+                                else:
+                                    ?><?= $escaper->escapeHtml(__('item')) ?><?php
+                                endif;?></span></span>
+                            <?php endif; ?></a>
+                    </label>
+                    <?php else: ?>
+                        <?= /* @noEscape */ $filterItem->getLabel() ?><?php
+                        if ($viewModel->shouldDisplayProductCountOnLayer()): ?><span
+                            class="count"><?= /* @noEscape */ (int) $filterItem->getCount() ?><span
+                                class="filter-count-label"><?php
                             if ($filterItem->getCount() == 1): ?>
                                 <?= $escaper->escapeHtml(__('items')) ?><?php
                             else:
                                 ?><?= $escaper->escapeHtml(__('items')) ?><?php
                             endif;?></span></span>
+                        <?php endif; ?>
+                    <?php endif; ?>
+                </li>
+            </ol>
+        <?php endforeach ?>
+        <button class="items-more">Meer</button>
+    <?php else: ?>
+        <?php foreach ($filterItems as $filterItem): ?>
+            <ol class="items">
+        <li class="item">
+            <?php if ($filterItem->getCount() > 0): ?>
+                <label class="item-label">
+                    <input class="item-btn" type="checkbox" onclick='window.location.assign("<?= $escaper->escapeUrl($filterItem->getUrl()) ?>")'>
+                    <a
+                        href="<?= $escaper->escapeUrl($filterItem->getUrl()) ?>"
+                        rel="nofollow"
+                    ><?= /* @noEscape */ $filterItem->getLabel() ?><?php
+                        if ($viewModel->shouldDisplayProductCountOnLayer()): ?><span
+                            class="count"><?= /* @noEscape */ (int) $filterItem->getCount() ?><span
+                                class="filter-count-label"><?php
+                            if ($filterItem->getCount() == 1): ?>
+                                <?= $escaper->escapeHtml(__('item')) ?><?php
+                            else:
+                                ?><?= $escaper->escapeHtml(__('item')) ?><?php
+                            endif;?></span></span>
+                        <?php endif; ?></a>
+                </label>
+            <?php else: ?>
+                <?= /* @noEscape */ $filterItem->getLabel() ?><?php
+                if ($viewModel->shouldDisplayProductCountOnLayer()): ?><span
+                    class="count"><?= /* @noEscape */ (int) $filterItem->getCount() ?><span
+                        class="filter-count-label"><?php
+                    if ($filterItem->getCount() == 1): ?>
+                        <?= $escaper->escapeHtml(__('items')) ?><?php
+                    else:
+                        ?><?= $escaper->escapeHtml(__('items')) ?><?php
+                    endif;?></span></span>
                 <?php endif; ?>
             <?php endif; ?>
         </li>
-    <?php endforeach ?>
-</ol>
+    </ol>
+        <?php endforeach ?>
+    <?php endif; ?>
+
+
+
+
+
+
+
