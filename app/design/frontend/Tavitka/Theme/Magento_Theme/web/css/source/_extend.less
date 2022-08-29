@@ -4,7 +4,6 @@
 maincontent *{
     z-index: 0;
 }
-
 li.level0.category-item.level-top.parent.ui-menu-item > a[class],
 li.level1.category-item.parent.ui-menu-item > a[class] {
     pointer-events: none;
@@ -65,7 +64,6 @@ li.level1.category-item.parent.ui-menu-item > a[class] {
         color: @accentgreen;
     }
 }
-
 .block {
     &.block-search {
         max-width: 600px;
@@ -243,11 +241,13 @@ li.level1.category-item.parent.ui-menu-item > a[class] {
         width: 100%;
         font-size: 14px;
         line-height: 1.5;
+        flex-basis: 275px;
     }
     &__item-name {
         font-weight: 700;
     }
-    &__item-link {
+    &__item-link,
+    &__tem-link:visited {
         cursor: pointer;
         color: @white;
         text-decoration: underline;

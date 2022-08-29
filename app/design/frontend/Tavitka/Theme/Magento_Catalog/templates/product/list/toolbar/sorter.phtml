@@ -13,7 +13,7 @@
 ?>
 <div class="toolbar-sorter sorter">
     <label class="sorter-label" for="sorter"><?= $block->escapeHtml(__('Tri')) ?></label>
-    <a class="sorter-btn-info" type="button">
+    <a class="sorter-btn-info" id="sorter-open-btn" type="button" data-mage-init='{"toggleAdvanced": {"selectorsToggleClass": "active", "toggleContainers": "#modal-sorter-info, #sorter-overlay"}}'>
         <svg viewBox="0 0 14 14" width="18px" height="18px" fill="@title-dark">
             <path fill-rule="evenodd" d="M7 14A7 7 0 117 0a7 7 0 010 14zm-.033-1a6 6 0 100-12 6 6 0 000 12zm-.464-6.984a.512.512 0 01.509-.516h-.024c.283 0 .514.228.515.516l.027 3.968a.512.512 0 01-.509.516h.024a.516.516 0 01-.515-.516l-.027-3.968zM7.031 4.5a.5.5 0 110-1 .5.5 0 010 1z"></path>
         </svg>
@@ -38,47 +38,51 @@
             <span><?= $block->escapeHtml(__('Set Ascending Direction')) ?></span>
         </a>
     <?php endif; ?>
-</div>
+    <div class="langs__list-wrapper sorter-info" id="modal-sorter-info">
+        <button class="langs__list-close-btn" id="langs-close-btn" data-mage-init='{"toggleAdvanced": {"selectorsToggleClass": "active", "toggleContainers": "#modal-sorter-info, #sorter-overlay"}}'>&times;</button>
+        <h3 class="sorter-info__title">Hoe sorteren werkt</h3>
+        <p class="sorter-info__desc">
+            Artikelen hebben vaak meerdere verkopers. Je ziet per zoekresultaat de verkoper die het beste scoort op leverbelofte, prijs en prestatiescore. Daarnaast sorteren we standaard alle resultaten op populariteit, maar je kunt deze ook zelf sorteren:
+        </p>
+        <ul class="sorter-info__items">
+            <li class="sorter-info__item">
+                <p class="sorter-info__item-title">Populariteit van de artikelen</p>
+                <p class="sorter-info__item-text">
+                    Hiervoor kijken we op verschillende manieren naar hoeveel interesse er is in een artikel. Tussen de resultaten kunnen ook gesponsorde artikelen* verschijnen.
+                </p>
+            </li>
+            <li class="sorter-info__item">
+                <p class="sorter-info__item-title">Prijs</p>
+                <p class="sorter-info__item-text">
+                    Van laag naar hoog of van hoog naar laag.
+                </p>
+            </li>
+            <li class="sorter-info__item">
+                <p class="sorter-info__item-title">Nieuw op bol.com</p>
+                <p class="sorter-info__item-text">
+                    Wat nieuw is op bol.com staat bovenaan.
+                </p>
+            </li>
+            <li class="sorter-info__item">
+                <p class="sorter-info__item-title">Beoordeling</p>
+                <p class="sorter-info__item-text">
+                    Artikelen met de beste reviews komen eerst. We kijken per artikel wat de score is, hoeveel reviews er zijn en hoe nieuw de reviews zijn.
+                </p>
+            </li>
+            <li class="sorter-info__item">
+                <p class="sorter-info__item-title">Meest gewild op verlanglijstjes</p>
+                <p class="sorter-info__item-text">
+                    Hoe vaker bewaard, hoe hoger het staat.
+                </p>
+            </li>
 
-<div class="sorter-info__wrapper" id="modal-sorter-info">
-    <button class="langs__list-close-btn" id="langs-close-btn" data-mage-init='{"toggleAdvanced": {"selectorsToggleClass": "active", "toggleContainers": "#modal-langs, #langs-overlay"}}'>&times;</button>
-    <h3 class="sorter-info__title">Affichage et présentation</h3>
-    <p class="sorter-info__desc">
-        Un même article est souvent proposé par plusieurs vendeurs. Chaque recherche affiche le vendeur qui présente le meilleur score en matière de livraison, de prix et de prestations. Par défaut, nous présentons aussi les articles par ordre de popularité, mais ceci est modifiable:
-    </p>
-    <ul class="sorter-info__items">
-        <li class="sorter-info__item">
-            <p class="sorter-info__item-title">Pertinence par rapport à vos mots-clés</p>
-            <p class="sorter-info__item-text">
-                Nous regardons pour ce faire le titre et la description des produits, mais aussi leur popularité et leur disponibilité. Des articles sponsorisés* peuvent également apparaître dans les résultats.
-            </p>
-        </li>
-        <li class="sorter-info__item">
-            <p class="sorter-info__item-title">Prix</p>
-            <p class="sorter-info__item-text">
-                Affiché de façon croissante ou décroissante.
-            </p>
-        </li>
-        <li class="sorter-info__item">
-            <p class="sorter-info__item-title">Nouveau sur bol.com</p>
-            <p class="sorter-info__item-text">
-                Les nouveautés sont mises en avant.
-            </p>
-        </li>
-        <li class="sorter-info__item">
-            <p class="sorter-info__item-title">Évaluation</p>
-            <p class="sorter-info__item-text">
-                Les articles les mieux notés sont affichés en premier. Par article, nous regardons le score obtenu, le nombre d’avis et leur actualité.
-            </p>
-        </li>
-        <li class="sorter-info__item">
-            <p class="sorter-info__item-title">Les plus ajoutés aux favoris</p>
-            <p class="sorter-info__item-text">
-                Le positionnement est proportionnel au nombre de sauvegardes.
-            </p>
-        </li>
-    </ul>
-
-
-    <div id="langs-overlay" data-mage-init='{"toggleAdvanced": {"selectorsToggleClass": "active", "baseToggleClass": "", "toggleContainers": "#modal-langs, #langs-overlay"}}'></div>
+            <li class="sorter-info__item sorter-info__item--last">
+                <p class="sorter-info__item-title">* Wat zijn gesponsorde artikelen?</p>
+                <p class="sorter-info__item-text">
+                    Verkopers kunnen tegen betaling een artikel meer op laten vallen. Het staat dan hoger tussen de resultaten.
+                </p>
+            </li>
+        </ul>
+    </div>
+    <div id="sorter-overlay" data-mage-init='{"toggleAdvanced": {"selectorsToggleClass": "active", "baseToggleClass": "", "toggleContainers": "#modal-sorter-info, #sorter-overlay"}}'></div>
 </div>

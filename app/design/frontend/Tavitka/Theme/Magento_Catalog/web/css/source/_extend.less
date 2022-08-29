@@ -11,7 +11,6 @@
     font-size: 28px;
     line-height: 1.25;
 }
-
 .toolbar {
     &.toolbar-products {
         margin: 15px 0;
@@ -39,10 +38,10 @@
     &-sorter.sorter > * {
         margin-right: 5px;
     }
-
     & .sorter-btn-info {
         position: relative;
         padding: 0 9px;
+        cursor: pointer;
     }
     & .sorter-btn-info > svg {
         position: absolute;
@@ -128,9 +127,6 @@
     & .action.previous:focus,
     & .action.next:focus {
         border-width: 2px;
-        //height: calc(45px - 2px);
-        //width: calc(45px - 2px);
-        //line-height: calc(45px - 2px);
     }
     & .action.previous:active,
     & .action.next:active {
@@ -141,7 +137,6 @@
         color: @white;
     }
 }
-
 .products.wrapper {
     margin: 0 0 25px;
     border-top: 1px solid @accentgrey-light;

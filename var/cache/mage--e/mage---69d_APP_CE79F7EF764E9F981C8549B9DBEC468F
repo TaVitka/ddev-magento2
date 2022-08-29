@@ -1,2 +1,2 @@
-a:4:{s:4:"hash";s:0:"";s:5:"mtime";i:1661262435;s:6:"expire";i:1661269635;s:4:"tags";s:49:"69d_STORE,69d_CONFIG,69d_COLLECTION_DATA,69d_MAGE";}
+a:4:{s:4:"hash";s:0:"";s:5:"mtime";i:1661756192;s:6:"expire";i:1661763392;s:4:"tags";s:49:"69d_STORE,69d_CONFIG,69d_COLLECTION_DATA,69d_MAGE";}
 [{"store_id":"1","code":"en","website_id":"1","group_id":"1","name":"English","sort_order":"0","is_active":"1"},{"store_id":"2","code":"nl","website_id":"1","group_id":"1","name":"Dutch","sort_order":"1","is_active":"1"}]

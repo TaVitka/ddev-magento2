@@ -121,7 +121,8 @@
         }
     }
 }
-#langs-overlay {
+#langs-overlay,
+#sorter-overlay {
     transition: opacity 0.5s ease-in-out;
     position: fixed;
     opacity: 0;
@@ -133,7 +134,8 @@
     backdrop-filter: blur(2px) brightness(0.7);
     pointer-events: none;
 }
-#langs-overlay.active {
+#langs-overlay.active,
+#sorter-overlay.active {
     pointer-events: all;
     opacity: 1;
     z-index: 5;
