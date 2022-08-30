@@ -14,8 +14,8 @@ $viewModel = $block->getData('product_layer_view_model');
 
 
     <?php if(count($filterItems) > 3): ?>
+        <ol class="items items--long">
         <?php foreach ($filterItems as $filterItem): ?>
-            <ol class="items items--long">
                 <li class="item item--long">
                     <?php if ($filterItem->getCount() > 0): ?>
                     <label class="item-label">
@@ -46,12 +46,12 @@ $viewModel = $block->getData('product_layer_view_model');
                         <?php endif; ?>
                     <?php endif; ?>
                 </li>
-            </ol>
         <?php endforeach ?>
-        <button class="items-more">Meer</button>
+        </ol>
+        <button class="items-more" data-mage-init='{"toggleAdvanced": {"selectorsToggleClass": "active", "baseToggleClass": "active", "toggleContainers": ".items--long"}}'>Meer</button>
     <?php else: ?>
-        <?php foreach ($filterItems as $filterItem): ?>
             <ol class="items">
+        <?php foreach ($filterItems as $filterItem): ?>
         <li class="item">
             <?php if ($filterItem->getCount() > 0): ?>
                 <label class="item-label">
@@ -83,8 +83,8 @@ $viewModel = $block->getData('product_layer_view_model');
                 <?php endif; ?>
             <?php endif; ?>
         </li>
-    </ol>
         <?php endforeach ?>
+            </ol>
     <?php endif; ?>
 
 

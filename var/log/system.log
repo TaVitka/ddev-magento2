@@ -24452,3 +24452,5 @@ Class Magento\Eav\Model\Entity\Attribute\Set\Interceptor generation error: The r
 [2022-08-29T14:51:24.153111+00:00] main.INFO: Broken reference: the 'minicart' tries to reorder itself towards 'wish-list-link', but their parents are different: 'custom.top.links' and 'top.links' respectively. [] []
 [2022-08-29T14:55:08.561141+00:00] main.INFO: Broken reference: the 'logo' tries to reorder itself towards 'nav.toggle', but their parents are different: 'header.main.inner' and '' respectively. [] []
 [2022-08-29T14:55:08.561499+00:00] main.INFO: Broken reference: the 'minicart' tries to reorder itself towards 'wish-list-link', but their parents are different: 'custom.top.links' and 'top.links' respectively. [] []
+[2022-08-30T08:13:00.375669+00:00] main.INFO: Broken reference: the 'logo' tries to reorder itself towards 'nav.toggle', but their parents are different: 'header.main.inner' and '' respectively. [] []
+[2022-08-30T08:13:00.376974+00:00] main.INFO: Broken reference: the 'minicart' tries to reorder itself towards 'wish-list-link', but their parents are different: 'custom.top.links' and 'top.links' respectively. [] []
