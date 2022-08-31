@@ -13,53 +13,18 @@ $viewModel = $block->getData('product_layer_view_model');
 ?>
 
 
-    <?php if(count($filterItems) > 3): ?>
-        <ol class="items items--long">
-        <?php foreach ($filterItems as $filterItem): ?>
-                <li class="item item--long">
-                    <?php if ($filterItem->getCount() > 0): ?>
-                    <label class="item-label">
-                        <input class="item-btn" type="checkbox" onclick='window.location.assign("<?= $escaper->escapeUrl($filterItem->getUrl()) ?>")'>
-                        <a href="<?= $escaper->escapeUrl($filterItem->getUrl()) ?>"
-                           rel="nofollow">
-                                <?= /* @noEscape */ $filterItem->getLabel() ?><?php
-                            if ($viewModel->shouldDisplayProductCountOnLayer()): ?><span
-                                class="count"><?= /* @noEscape */ (int) $filterItem->getCount() ?><span
-                                    class="filter-count-label"><?php
-                                if ($filterItem->getCount() == 1): ?>
-                                    <?= $escaper->escapeHtml(__('item')) ?><?php
-                                else:
-                                    ?><?= $escaper->escapeHtml(__('item')) ?><?php
-                                endif;?></span></span>
-                            <?php endif; ?></a>
-                    </label>
-                    <?php else: ?>
-                        <?= /* @noEscape */ $filterItem->getLabel() ?><?php
-                        if ($viewModel->shouldDisplayProductCountOnLayer()): ?><span
-                            class="count"><?= /* @noEscape */ (int) $filterItem->getCount() ?><span
-                                class="filter-count-label"><?php
-                            if ($filterItem->getCount() == 1): ?>
-                                <?= $escaper->escapeHtml(__('items')) ?><?php
-                            else:
-                                ?><?= $escaper->escapeHtml(__('items')) ?><?php
-                            endif;?></span></span>
-                        <?php endif; ?>
-                    <?php endif; ?>
-                </li>
-        <?php endforeach ?>
-        </ol>
-        <button class="items-more" data-mage-init='{"toggleAdvanced": {"selectorsToggleClass": "active", "baseToggleClass": "active", "toggleContainers": ".items--long"}}'>Meer</button>
-    <?php else: ?>
-            <ol class="items">
-        <?php foreach ($filterItems as $filterItem): ?>
+<ol <?php if(count($filterItems) > 3): ?>
+    class="items items--long"
+    <?php else: ?>class="items"
+    <?php endif; ?>>
+    <?php foreach ($filterItems as $filterItem): ?>
         <li class="item">
             <?php if ($filterItem->getCount() > 0): ?>
                 <label class="item-label">
                     <input class="item-btn" type="checkbox" onclick='window.location.assign("<?= $escaper->escapeUrl($filterItem->getUrl()) ?>")'>
-                    <a
-                        href="<?= $escaper->escapeUrl($filterItem->getUrl()) ?>"
-                        rel="nofollow"
-                    ><?= /* @noEscape */ $filterItem->getLabel() ?><?php
+                    <a href="<?= $escaper->escapeUrl($filterItem->getUrl()) ?>"
+                       rel="nofollow">
+                        <?= /* @noEscape */ $filterItem->getLabel() ?><?php
                         if ($viewModel->shouldDisplayProductCountOnLayer()): ?><span
                             class="count"><?= /* @noEscape */ (int) $filterItem->getCount() ?><span
                                 class="filter-count-label"><?php
@@ -83,9 +48,12 @@ $viewModel = $block->getData('product_layer_view_model');
                 <?php endif; ?>
             <?php endif; ?>
         </li>
-        <?php endforeach ?>
-            </ol>
-    <?php endif; ?>
+    <?php endforeach ?>
+</ol>
+<?php if(count($filterItems) > 3): ?>
+    <button class="items-more" data-mage-init='{"toggleAdvanced": {"selectorsToggleClass": "active", "baseToggleClass": "active", "toggleContainers": ".items--long"}}'>Meer</button>
+<?php endif; ?>
+
 
 
 
