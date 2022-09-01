@@ -1,0 +1,42 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+?>
+
+<?php /** @var $block \Magento\Framework\Pricing\Render\Amount */ ?>
+
+<span class="price-container <?= $block->escapeHtmlAttr($block->getAdjustmentCssClasses()) ?>"
+    <?= $block->getSchema() ? ' itemprop="offers" itemscope itemtype="http://schema.org/Offer"' : '' ?>>
+    <?php if ($block->getDisplayLabel() != 'As low as') : ?>
+        <?php if ($block->getDisplayLabel()) : ?>
+            <span class="price-label"><?= $block->escapeHtml($block->getDisplayLabel()) ?></span>
+        <?php endif; ?>
+    <?php endif; ?>
+    <?php
+    $priceseparator = explode('.', $block->formatCurrency($block->getDisplayValue()));
+    $dollars = $priceseparator[0];
+    $cents = $priceseparator[1];
+    $signDollar = '$';
+    $zeroCents = '00';
+    ?>
+    <span class="price-dollars">
+        <?php if (strpos($dollars, $signDollar) !== false) {
+            echo str_replace("$", "", $dollars);
+        } ?>
+    </span>
+        <?php if(strpos($cents, $zeroCents) !== false):?>
+            <sup class="price-cnt">-</sup>
+        <?php else: ?>
+            <sup class="price-cnt"><?php echo $cents ?></sup>
+        <?php endif; ?>
+
+    <?php if ($block->hasAdjustmentsHtml()) : ?>
+        <?= $block->getAdjustmentsHtml() ?>
+    <?php endif; ?>
+    <?php if ($block->getSchema()) : ?>
+        <meta itemprop="price" content="<?= $block->escapeHtmlAttr($block->getDisplayValue()) ?>"/>
+        <meta itemprop="priceCurrency" content="<?= $block->escapeHtmlAttr($block->getDisplayCurrencyCode()) ?>"/>
+    <?php endif; ?>
+</span>
