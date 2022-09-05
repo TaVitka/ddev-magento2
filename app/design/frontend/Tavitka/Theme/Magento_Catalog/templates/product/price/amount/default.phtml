@@ -25,12 +25,12 @@
         <?php if (strpos($dollars, $signDollar) !== false) {
             echo str_replace("$", "", $dollars);
         } ?>
-    </span>
         <?php if(strpos($cents, $zeroCents) !== false):?>
             <sup class="price-cnt">-</sup>
         <?php else: ?>
             <sup class="price-cnt"><?php echo $cents ?></sup>
         <?php endif; ?>
+    </span>
 
     <?php if ($block->hasAdjustmentsHtml()) : ?>
         <?= $block->getAdjustmentsHtml() ?>
