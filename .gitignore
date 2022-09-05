@@ -1,8 +1,3 @@
-*
-!/app
-!/app/*
-
-
 /.buildpath
 /.cache
 /.metadata
@@ -37,8 +32,6 @@ atlassian*
 /package.json
 /.php_cs
 /.php_cs.cache
-/.php-cs-fixer.php
-/.php-cs-fixer.cache
 /grunt-config.json
 /pub/media/*.*
 !/pub/media/.htaccess
