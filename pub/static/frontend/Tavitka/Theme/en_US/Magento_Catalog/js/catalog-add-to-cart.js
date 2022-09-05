@@ -1,1 +1,1 @@
-/var/www/html/vendor/magento/module-catalog/view/frontend/web/js/catalog-add-to-cart.js
+/var/www/html/app/design/frontend/Tavitka/Theme/Magento_Catalog/web/js/catalog-add-to-cart.js
