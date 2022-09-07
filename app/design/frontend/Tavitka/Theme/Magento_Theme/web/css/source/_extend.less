@@ -1,7 +1,7 @@
 @import '_breadcrumbs';
 
 #maincontent,
-maincontent *{
+maincontent * {
     z-index: 0;
 }
 li.level0.category-item.level-top.parent.ui-menu-item > a[class],
@@ -94,24 +94,57 @@ li.level1.category-item.parent.ui-menu-item > a[class] {
 }
 .header-main__links {
     & > * {
-        padding: 10px;
-        margin-bottom: 0;
+        margin: 0 auto;
     }
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    & .link.authorization-link,
-    & .link.wishlist {
-        line-height: 1;
-        margin-right: 10px;
+    //justify-content: space-between;
+    & .link.authorization-link a{
+        padding: 10px;
     }
     & .minicart-wrapper,
     & .link.wishlist {
-        border-radius: 50%;
-        transition: background-color 0.5s ease-in-out;
+        position: relative;
     }
-    & .minicart-wrapper:hover,
-    & .link.wishlist:hover {
+    & .add.wishlist .counter.qty,
+    & .action.showcart .counter.qty {
+        position: absolute;
+        top: -10px;
+        right: -10px;
+        border-radius: 50%;
+        width: 24px;
+        background: @accent-yellow;
+        color: @accentblue;
+    }
+    & .add.wishlist .counter.qty {
+        top: -7px;
+        right: -7px;
+        text-align: center;
+        height: 24px;
+        line-height: 24px;
+        text-shadow: 0 0 7px #000000;
+        &::before,
+        &::after {
+            content: '';
+        }
+    }
+    & .action.showcart .minicart-wrapper-icon,
+    & .add.wishlist .wishlist-wrapper-icon {
+        padding: 19px;
+        border-radius: 50%;
+        position: relative;
+        display: inline-block;
+        background-color: transparent;
+        transition: background-color 0.4s ease-in-out;
+    }
+    & .action.showcart .minicart-wrapper-icon svg,
+    & .add.wishlist .wishlist-wrapper-icon svg {
+        position: absolute;
+        top: 8px;
+        left: 8px;
+    }
+    & .action.showcart:hover .minicart-wrapper-icon,
+    & .add.wishlist:hover .wishlist-wrapper-icon {
         background-color: rgba(255, 255, 255, .25);
     }
     & a {
@@ -155,21 +188,28 @@ li.level1.category-item.parent.ui-menu-item > a[class] {
             margin-right: 20px;
         }
         &  li {
-            height: 35px;
+            min-height: 35px;
         }
-        & a {
+        & a[class][id] {
             color: @title-dark;
             font-weight: 400;
             line-height: 35px;
-            padding: 0 20px;
+        }
+        & a[class][id]:hover {
+            background: none;
         }
         & .category-item.level-top.parent.ui-menu-item {
             border-bottom: 4px solid transparent;
             transition: all 0.5s ease-in-out;
         }
+        & .category-item.level-top.parent.ui-menu-item.has-active:not(:first-child),
+        & .category-item.level-top.parent.ui-menu-item.has-active:not(:last-of-type),
         & .category-item.level-top.parent.ui-menu-item:not(:first-child):hover,
         & .category-item.level-top.parent.ui-menu-item:not(:last-of-type):hover {
             border-bottom: 4px solid @accentblue;
+        }
+        & .category-item.active.ui-menu-item {
+            border-left: 4px solid @accentblue;
         }
         & .level0.nav-1.category-item.first.level-top.ui-menu-item {
             & #ui-id-2 {
@@ -210,8 +250,20 @@ li.level1.category-item.parent.ui-menu-item > a[class] {
         }
     }
 }
-.level0.nav-1.category-item.first.level-top.ui-menu-item .level-top.ui-menu-item-wrapper[id] {
-    padding-left: 0;
+// For active categories items in menu in header
+.navigation {
+    & .level0.active > .level-top,
+    & .level0.has-active > .level-top,
+    & .level0 .submenu .active > a {
+        border-color: transparent;
+    }
+}
+// End of active categories items in menu in header
+
+.level0.nav-1.category-item.first.level-top.ui-menu-item {
+    & .level-top.ui-menu-item-wrapper[id] {
+        padding-left: 0;
+    }
 }
 .page-footer {
     background-color: @white;
