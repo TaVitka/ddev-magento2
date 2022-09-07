@@ -1,10 +1,21 @@
 .page-title-wrapper {
     margin-bottom: 15px;
 }
-.navigation .level0.has-active > .level-top,
-.navigation .level0 .submenu .active > a{
-    border-color: @accentblue;
+
+// Styles for category description content (page-builder)
+.category-description {
+    & .main-sales__title.category {
+        font-size: 26px;
+        margin-bottom: 5px;
+    }
+    & .main-sales__desc.category {
+        margin-bottom: 10px;
+        font-size: 18px;
+        font-weight: 400;
+    }
 }
+// End for Styles for category description content (page-builder)
+
 #page-title-heading {
     font-weight: 700;
     color: #03031a;
@@ -215,6 +226,7 @@
             color: @accentgrey-dark;
             font-size: 12px;
             margin-bottom: 15px;
+            padding-top: 10px;
         }
         &-name {
             margin-bottom: 15px;
@@ -372,6 +384,26 @@
        text-decoration: none;
     }
 }
+// tooltip for .product-item__advr-info
+.my-tooltip {
+    .lib-tooltip();
+    .product-item__advr-info.tooltip-toggle {
+        cursor: unset;
+    }
+    & .tooltip-content {
+        border-radius: 3%;
+        &__title,
+        &__text {
+            margin-bottom: 15px;
+        }
+        &__title {
+            font-weight: 700;
+        }
+    }
+}
+
+
+//end // tooltip for .product-item__advr-info
 
 
 
