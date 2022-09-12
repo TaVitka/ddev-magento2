@@ -19,6 +19,7 @@ use Magento\Framework\App\Action\Action;
 
 ?>
 <?php
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
 $_productCollection = $block->getLoadedProductCollection();
 /** @var \Magento\Catalog\Helper\Output $_helper */
 $_helper = $block->getData('outputHelper');
@@ -102,6 +103,31 @@ $_helper = $block->getData('outputHelper');
                                 <a class="product-item-text__link" href="<?= $escaper->escapeUrl($_product->getProductUrl()) ?>">Meer</a>
                             </div>
                         <?php endif; ?>
+                        <?php if($productNumber % 5 == 0 && $block->getMode() !== 'grid'): ?>
+                            <?php
+                                $currentProductId = $_product->getId();
+                                $relatedProducts = $_product->getRelatedProducts();
+                            ?>
+                            <ul class="test">
+                            <?php foreach ($relatedProducts as $relatedProduct): ?>
+                                <?php
+                                    $_related = $objectManager->create('Magento\Catalog\Model\Product')->load($relatedProduct->getId());
+                                    $relatedProductName = $_related->getName();
+                                    $relatedProductPrice = $_related->getPrice();
+                                ?>
+                                <li class="test">
+                                    <a class="test-link" href="<?= $escaper->escapeUrl($_related->getProductUrl()) ?>" >
+                                        <?php
+                                        $relatedProductImg = $block->getImage($_related, $imageDisplayArea);
+                                        ?>
+                                        <?= $relatedProductImg->toHtml() ?>
+                                    <p class="test-name"><?= $relatedProductName ?></p>
+                                        <?= $block->getProductPrice($_related) ?>
+                                    </a>
+                                </li>
+                            <?php endforeach; ?>
+                            </ul>
+                        <?php endif; ?>
                     </div>
                     <div class="product-item-price">
                         <?= $block->getProductPrice($_product) ?>
@@ -117,9 +143,17 @@ $_helper = $block->getData('outputHelper');
                                         </li>
                                     </ul>
                                     <p class="product-item__advr-text">Voor 23:59 uur besteld, maandag in huis</p>
-                                    <svg class="product-item__advr-info" viewBox="0 0 14 14" width="18px" height="18px">
-                                        <path d="M7 14A7 7 0 117 0a7 7 0 010 14zm-.033-1a6 6 0 100-12 6 6 0 000 12zm-.464-6.984a.512.512 0 01.509-.516h-.024c.283 0 .514.228.515.516l.027 3.968a.512.512 0 01-.509.516h.024a.516.516 0 01-.515-.516l-.027-3.968zM7.031 4.5a.5.5 0 110-1 .5.5 0 010 1z"></path>
-                                    </svg>
+                                    <span class="my-tooltip">
+                                        <svg class="product-item__advr-info tooltip-toggle" viewBox="0 0 14 14" width="18px" height="18px">
+                                            <path d="M7 14A7 7 0 117 0a7 7 0 010 14zm-.033-1a6 6 0 100-12 6 6 0 000 12zm-.464-6.984a.512.512 0 01.509-.516h-.024c.283 0 .514.228.515.516l.027 3.968a.512.512 0 01-.509.516h.024a.516.516 0 01-.515-.516l-.027-3.968zM7.031 4.5a.5.5 0 110-1 .5.5 0 010 1z"></path>
+                                        </svg>
+                                        <div class="tooltip-content">
+                                            <p class="tooltip-content__title">Levertijd</p>
+                                            <p class="tooltip-content__text">We doen er alles aan om dit artikel op tijd te bezorgen. Het is echter in een enkel geval mogelijk dat door omstandigheden de bezorging vertraagd is.</p>
+                                            <p class="tooltip-content__title">Bezorgopties</p>
+                                            <p class="tooltip-content__text">We bieden verschillende opties aan voor het bezorgen of ophalen van je bestelling. Welke opties voor jouw bestelling beschikaar zijn, zie je bij het afronden van de bestelling.</p>
+                                        </div>
+                                    </span>
                                 </div>
                                 <div class="product-item__advr-bottom">
                                     <p class="product-item__advr-seller">Verkoop door bol.com</p>
