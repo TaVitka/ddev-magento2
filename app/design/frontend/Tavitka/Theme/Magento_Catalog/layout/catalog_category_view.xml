@@ -10,5 +10,8 @@
         <move element="category.image" destination="content" before="category.products"/>
         <move element="category.description" destination="content" before="category.products"/>
         <move element="page.main.title" destination="content" before="category.products"/>
+        <block class="Magento\Catalog\Block\Category\View" name="description.slider" template="Magento_Catalog::/descriptionSlider.phtml" />
+        <move element="description.slider" destination="content" after="category.description"/>
+        <referenceBlock name="category.image" display="false"/>
     </body>
 </page>
