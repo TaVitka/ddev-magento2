@@ -384,6 +384,8 @@
        text-decoration: none;
     }
 }
+// end of Review for product
+
 // tooltip for .product-item__advr-info
 .my-tooltip {
     .lib-tooltip();
@@ -401,9 +403,98 @@
         }
     }
 }
+//end tooltip for .product-item__advr-info
 
+// Styles for description section
+.category-description {
+    &__text {
+        display: flex;
+        font-size: 14px;
+        line-height: 1.5;
+        &.active {
+            display: block;
+        }
+    }
+    &__paragraph {
+        height: 30px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        &.active {
+            height: fit-content;
+            white-space: normal;
+            margin-bottom: 35px;
+        }
+    }
+    &__more {
+        position: relative;
+        color: @accentblue-light;
+        cursor: pointer;
+        padding: 5px 20px;
+        align-self: flex-end;
+        &.active {
+            padding: 0 25px;
+        }
+        &::before {
+            position: absolute;
+            content: 'Meer';
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+        &.active::before {
+            content: 'Minder';
+        }
+        &:hover::before {
+            text-decoration: underline;
+        }
+    }
+}
+// End of styles for description section
 
-//end // tooltip for .product-item__advr-info
+// Styles for subcategory-slider under description section
+.subcategory-slider {
+    margin-bottom: 10px;
+    & .slick-slide {
+        margin-right: 10px;
+    }
+    &__item {
+        &-link {
+            display: flex;
+            align-items: center;
+            border: 1px solid @accentgrey-light;
+            border-radius: 5px;
+            padding: 10px;
+        };
+        &-image {
+            max-height: 40px;
+            margin-right: 10px;
+        }
+        &-title {
+            color: #03031a;
+            font-size: 14px;
+            line-height: 1.5;
+            font-weight: 400;
+        }
+    }
+    & .slick-next,
+    & .slick-prev {
+        border-style: solid;
+        border-color: @accentgrey-dark;
+    }
+    & .slick-next {
+        border-width: 0 0 1px 1px;
+    }
+    & .slick-prev {
+        border-width: 0 1px 1px 0;
+    }
+    & .slick-next::before,
+    & .slick-prev::before {
+        line-height: 35px;
+    }
+}
+// End of styles for subcategory-slider under description section
 
 
 
