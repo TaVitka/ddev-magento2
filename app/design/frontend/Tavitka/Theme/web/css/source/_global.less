@@ -4,16 +4,24 @@ body {
 a[class]:visited {
  color: inherit;
 }
+.page-wrapper {
+        #maincontent,
+        .product-image-wrapper,
+        .logo,
+        .header-content__inner > div[class].block.block-search,
+        .actions > button.action.search,
+        .filter-options-title,
+        .rating-result {
+            z-index: 0;
+        }
+        .slick-prev,
+        .slick-next {
+            z-index: 1;
+        }
+}
 .container {
     max-width: 1320px;
     padding: 10px;
     margin: 0 auto;
     width: 100%;
-}
-.product-image-wrapper,
-.logo,
-.block.block-search,
-.actions > button.action.search,
-.filter-options-title {
-    z-index: unset;
 }
