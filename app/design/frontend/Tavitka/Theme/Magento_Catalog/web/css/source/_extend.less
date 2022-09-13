@@ -241,6 +241,7 @@
             height: 57px;
             overflow: hidden;
             text-overflow: ellipsis;
+            margin-bottom: 25px;
         }
         a[class]&-text__link,
         a[class]&-text__link:visited,
@@ -256,7 +257,8 @@
         & .price-box {
             margin: 0 0 10px;
         }
-        &-price .price,products wrapper grid products-grid
+        &-price .price,
+        &-price .price-dollars,
         &-price .price-cnt,
         &-price .price-cnt::before {
             font-size: 26px;
@@ -496,6 +498,111 @@
 }
 // End of styles for subcategory-slider under description section
 
+// Styles for related products
+.product-item-related {
+    display: flex;
+    flex-basis: 100%;
+    flex-wrap: wrap;
+    &-item {
+        flex-basis: 50%;
+    }
+    &-desc {
+        margin-bottom: 25px;
+    }
+    &-link {
+        display: flex;
+        &:hover {
+            text-decoration: none;
+        }
+    }
+    &-image{
+        width: 100%;
+        max-width: 55px;
+        & .product-image-photo {
+            max-width: 50px;
+            margin: 0;
+        }
+    }
+    &-info {
+        & .price-box {
+            color: @accentred-brigth;
+        }
+        & .price-dollars {
+            font-weight: 700;
+        }
+    }
+    &-name {
+        font-size: 12px;
+        color: @title-dark;
+        line-height: 1.5;
+    }
+}
+// End of styles for related products
+
+// Styles for special price
+.special-price {
+        & > .price-container.price-final_price.tax.weee {
+            & > .price-dollars {
+                background: #f91906;
+                color: white;
+                position: relative;
+                padding: 5px 10px;
+                border-radius: 5px 0 0 5px;
+                margin-right: 24px;
+                &::after {
+                    position: absolute;
+                    top: 0px;
+                    right: -15px;
+                    bottom: 0;
+                    width: 24px;
+                    height: inherit;
+                    content: "";
+                    background-color: inherit;
+                    border-radius: 0 4px 4px 0;
+                    transform: skewX(-15deg);
+                }
+                & .price,
+                & .price-cnt::before,
+                & .price-cnt {
+                    color: @white;
+                }
+            }
+        }
+    }
+.old-price {
+    top: -5px;
+    position: relative;
+    padding: 14px 5px 14px 10px;
+    border-radius: 5px;
+    border-right: 1px solid @accentgrey-light;
+    border-bottom: 1px solid @accentgrey-light;
+    margin-left: 5px;
+    &::before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        border-left: 1px solid @accentgrey-light;
+        border-top: 1px solid @accentgrey-light;
+        border-bottom: 1px solid @accentgrey-light;
+        z-index: -1;
+        border-radius: 4px 4px 0 4px;
+        transform: skewX(-15deg);
+        left: 0;
+        top: 0;
+        bottom: -1px;
+    }
+    &-link,
+    & a[class].old-price-link:visited {
+        color: @accentred-brigth;
+        font-weight: 600;
+        font-size: 12px;
+        line-height: 1.5;
+        &:hover {
+            text-decoration: none;
+        }
+    }
+}
+// End of styles for special price
 
 
 
