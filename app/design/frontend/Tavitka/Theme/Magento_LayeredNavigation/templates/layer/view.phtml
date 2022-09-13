@@ -59,7 +59,13 @@
                         endif; ?>
                     <div data-role="collapsible" class="filter-options-item">
                         <div data-role="title" class="filter-options-title"><?= $block->escapeHtml(__($filter->getName())) ?></div>
-                        <div data-role="content" class="filter-options-content"><?= /* @noEscape */ $block->getChildBlock('renderer')->render($filter) ?></div>
+                        <div data-role="content" class="filter-options-content" id="filter-<?= $block->escapeHtml(__($filter->getName())) ?>">
+                            <?= /* @noEscape */ $block->getChildBlock('renderer')->render($filter) ?>
+                            <?php if ($filter->getItemsCount() > 3 && $block->escapeHtml(__($filter->getName())) !== 'Size' && $block->escapeHtml(__($filter->getName())) !== 'Color' && $block->escapeHtml(__($filter->getName())) !== 'Grootte' && $block->escapeHtml(__($filter->getName())) !== 'Kleur' ): ?>
+                                <button class="items-more" data-mage-init='{"toggleAdvanced": {"selectorsToggleClass": "active", "baseToggleClass": "active", "toggleContainers": "#filter-<?= $block->escapeHtml(__($filter->getName())) ?>"}}'>Meer</button>
+                            <?php endif; ?>
+                        </div>
+
                     </div>
                 <?php endif; ?>
             <?php endforeach; ?>
