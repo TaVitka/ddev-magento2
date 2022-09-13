@@ -12,7 +12,6 @@
 $viewModel = $block->getData('product_layer_view_model');
 ?>
 
-
 <ol <?php if(count($filterItems) > 3): ?>
     class="items items--long"
     <?php else: ?>class="items"
@@ -50,9 +49,6 @@ $viewModel = $block->getData('product_layer_view_model');
         </li>
     <?php endforeach ?>
 </ol>
-<?php if(count($filterItems) > 3): ?>
-    <button class="items-more" data-mage-init='{"toggleAdvanced": {"selectorsToggleClass": "active", "baseToggleClass": "active", "toggleContainers": ".items--long"}}'>Meer</button>
-<?php endif; ?>
 
 
 
