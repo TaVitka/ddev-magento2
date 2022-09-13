@@ -103,26 +103,33 @@ $_helper = $block->getData('outputHelper');
                                 <a class="product-item-text__link" href="<?= $escaper->escapeUrl($_product->getProductUrl()) ?>">Meer</a>
                             </div>
                         <?php endif; ?>
-                        <?php if($productNumber % 5 == 0 && $block->getMode() !== 'grid'): ?>
+                        <?php if($productNumber % 3 == 0 && $block->getMode() !== 'grid'): ?>
                             <?php
                                 $currentProductId = $_product->getId();
                                 $relatedProducts = $_product->getRelatedProducts();
                             ?>
-                            <ul class="test">
+                            <p class="product-item-related-desc">
+                                In verschillende varianten verkrijgbaar:
+                            </p>
+                            <ul class="product-item-related">
                             <?php foreach ($relatedProducts as $relatedProduct): ?>
                                 <?php
                                     $_related = $objectManager->create('Magento\Catalog\Model\Product')->load($relatedProduct->getId());
                                     $relatedProductName = $_related->getName();
                                     $relatedProductPrice = $_related->getPrice();
                                 ?>
-                                <li class="test">
-                                    <a class="test-link" href="<?= $escaper->escapeUrl($_related->getProductUrl()) ?>" >
-                                        <?php
-                                        $relatedProductImg = $block->getImage($_related, $imageDisplayArea);
-                                        ?>
-                                        <?= $relatedProductImg->toHtml() ?>
-                                    <p class="test-name"><?= $relatedProductName ?></p>
-                                        <?= $block->getProductPrice($_related) ?>
+                                <li class="product-item-related-item">
+                                    <a class="product-item-related-link" href="<?= $escaper->escapeUrl($_related->getProductUrl()) ?>" >
+                                        <div class="product-item-related-image">
+                                            <?php
+                                            $relatedProductImg = $block->getImage($_related, $imageDisplayArea);
+                                            ?>
+                                            <?= $relatedProductImg->toHtml() ?>
+                                        </div>
+                                        <div class="product-item-related-info">
+                                         <p class="product-item-related-name"><?= $relatedProductName ?></p>
+                                             <?= $block->getProductPrice($_related) ?>
+                                        </div>
                                     </a>
                                 </li>
                             <?php endforeach; ?>
