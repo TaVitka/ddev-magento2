@@ -409,3 +409,27 @@ li.level1.category-item.parent.ui-menu-item > a[class] {
     }
 }
 
+// Styles for Cart Page Main Title
+.checkout-cart-index {
+    .page-title {
+        position: relative;
+        font-weight: 700;
+        font-size: 28px;
+        line-height: 1.25;
+        margin-bottom: 15px;
+        padding-left: 50px;
+        &::before {
+            content: '';
+            position: absolute;
+            background-image: url("../images/cart-page-icons/cart-bg-icon.svg");
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-repeat: no-repeat;
+            background-position: left;
+            background-size: contain;
+        }
+    }
+}
+// End of styles for Cart Page Main Title
