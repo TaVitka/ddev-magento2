@@ -1,0 +1,83 @@
+.checkout-cart-index {
+    // If cart empty
+    .cart-empty {
+        text-align: center;
+        .cart-empty__img {
+            background-color: #f0f6ff;
+            padding: 25px;
+            margin-bottom: 15px;
+            .cart-empty__img-picture {
+                margin: 0 auto;
+            }
+        }
+        .cart-empty__info {
+            .cart-empty__info-title {
+                font-size: 28px;
+                color: @accentblue;
+                line-height: 1.25;
+                font-weight: 700;
+            }
+            .cart-empty__info-subtitle {
+                font-size: 18px;
+                line-height: 1.5;
+                margin-bottom: 25px;
+            }
+            .cart-empty__info-buttons {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                .cart-empty__info-button {
+                    border: 1px solid @accentblue-light;
+                    padding: 10px 15px;
+                    box-shadow: rgba(10, 10, 10, 0.25) 0 4px 0 -2px;
+                    transition: all 0.3s ease-in-out;
+                    &:first-child {
+                        margin-right: 15px;
+                        margin-bottom: 10px;
+                    }
+                    &--blue {
+                        background-color: @accentblue-light;
+                        color: @white;
+                        &:hover {
+                            background-color: rgba(0, 0, 255, 0.8);
+                            border-color: rgba(0, 0, 255, 0.8);
+                        }
+                    }
+                    &--white {
+                        background-color: @white;
+                        color: @accentblue-light;
+                        outline: 1px solid transparent;
+                        &:hover {
+                            outline: 1px solid @accentblue-light;
+                        }
+                    }
+                    .cart-empty__info-link {
+                        font-size: 16px;
+                        line-height: 1.5;
+                        &:hover {
+                            text-decoration: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    // End if cart empty
+    // Styles for seller poup-up
+        .seller-info {
+            max-width: 700px;
+            width: 100%;
+            height: 85vh;
+            overflow-y: scroll;
+            .seller-info__top {
+                //display: flex;
+                //align-items: center;
+                .sorter-info__top-title {
+                    margin-right: 0;
+                }
+            }
+        }
+    // End styles for seller poup-up
+}
+
+
