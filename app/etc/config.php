@@ -346,7 +346,7 @@ return [
         'MarkShust_PageBuilderSourceCode' => 1,
         'PayPal_Braintree' => 1,
         'PayPal_BraintreeGraphQl' => 1,
-        'Tavitka_SubCategoriesSliderWidget' => 1,
+        'TaVitka_MainPageSlider' => 1,
         'Temando_ShippingRemover' => 1
     ]
 ];
