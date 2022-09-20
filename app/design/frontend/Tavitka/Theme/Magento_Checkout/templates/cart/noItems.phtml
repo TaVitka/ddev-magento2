@@ -1,0 +1,49 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+/**  @var $block \Magento\Checkout\Block\Cart */
+?>
+<div class="cart-empty">
+    <?= $block->getChildHtml('checkout_cart_empty_widget') ?>
+    <div class="cart-empty__img">
+    <img class="cart-empty__img-picture" src="<?php echo $this->getViewFileUrl('images/cart-page-icons/empty_cart.svg'); ?>" alt="">
+    </div>
+    <div class="cart-empty__info">
+        <h1 class="cart-empty__info-title">Your shopping cart is empty</h1>
+        <p class="cart-empty__info-subtitle">Looking for ideas?</p>
+        <ul class="cart-empty__info-buttons">
+            <?php
+            $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+            $customerSession = $objectManager->get('Magento\Customer\Model\Session');
+            ?>
+            <?php if($customerSession->isLoggedIn()): ?>
+            <?php else: ?>
+            <li class="cart-empty__info-button cart-empty__info-button--blue">
+                <a class="cart-empty__info-link" href="<?php echo $this->getUrl('customer/account/login'); ?>">
+                    Login to view your shopping cart
+                </a>
+            </li>
+            <?php endif; ?>
+            <li class="cart-empty__info-button cart-empty__info-button--white">
+                    <?= $block->escapeHtml(
+                        __(
+                            '<a href="%1" class="cart-empty__info-link">Continue shopping</a>',
+                            $block->escapeUrl($block->getContinueShoppingUrl())
+                        ),
+                        ['a']
+                    ) ?>
+            </li>
+        </ul>
+    </div>
+    <?= $block->getChildHtml('shopping.cart.table.after') ?>
+</div>
+<script type="text/x-magento-init">
+{
+    "*": {
+        "Magento_Checkout/js/empty-cart": {}
+    }
+}
+</script>
