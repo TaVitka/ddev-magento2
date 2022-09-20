@@ -1,0 +1,188 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// phpcs:disable Magento2.Templates.ThisInTemplate
+// phpcs:disable Generic.Files.LineLength
+
+/** @var $block \Magento\Checkout\Block\Cart\Item\Renderer */
+
+$_item = $block->getItem();
+$product = $_item->getProduct();
+$isVisibleProduct = $product->isVisibleInSiteVisibility();
+/** @var \Magento\Msrp\Helper\Data $helper */
+$helper = $this->helper(Magento\Msrp\Helper\Data::class);
+$canApplyMsrp = $helper->isShowBeforeOrderConfirm($product) && $helper->isMinimalPriceLessMsrp($product);
+?>
+<tbody class="cart item">
+<tr class="item-info">
+    <td data-th="<?= $block->escapeHtml(__('Item')) ?>" class="col item">
+        <?php if ($block->hasProductUrl()): ?>
+        <a href="<?= $block->escapeUrl($block->getProductUrl()) ?>"
+           title="<?= $block->escapeHtml($block->getProductName()) ?>"
+           tabindex="-1"
+           class="product-item-photo">
+            <?php else: ?>
+            <span class="product-item-photo">
+            <?php endif; ?>
+            <?= $block->getImage($block->getProductForThumbnail(), 'cart_page_product_thumbnail')->toHtml() ?>
+            <?php if ($block->hasProductUrl()): ?>
+        </a>
+    <?php else: ?>
+        </span>
+    <?php endif; ?>
+        <div class="product-item-details">
+            <p class="product-item-country"><?= $product->getAttributeText('country_of_manufacture'); ?></p>
+            <strong class="product-item-name">
+                <?php if ($block->hasProductUrl()): ?>
+                    <a href="<?= $block->escapeUrl($block->getProductUrl()) ?>"><?= $block->escapeHtml($block->getProductName()) ?></a>
+                <?php else: ?>
+                    <?= $block->escapeHtml($block->getProductName()) ?>
+                <?php endif; ?>
+            </strong>
+            <div class="product-reviews-summary short no-rating">
+                <div class="rating-summary">
+                    <span class="label"><span>Rating:</span></span>
+                    <div class="rating-result" id="rating-result_1365" title="0%">
+                        <span style="width: 0%;"><span>0%</span></span>
+                    </div>
+                    <script type="text/javascript">var elem1vwUSioe = document.querySelector('#rating-result_1365 span');
+                        if (elem1vwUSioe) {
+                            elem1vwUSioe.style.width = '0%';
+                        }</script>            </div>
+                <div class="reviews-actions">
+                    <a class="action view" href="https://ddev-magento2.ddev.site/index.php/en/juno-jacket-xs-blue.html#reviews">(0)
+                    </a>
+                </div>
+            </div>
+            <?php if ($messages = $block->getMessages()): ?>
+                <?php foreach ($messages as $message): ?>
+                    <div class= "cart item message <?= $block->escapeHtmlAttr($message['type']) ?>">
+                        <div><?= $block->escapeHtml($message['text']) ?></div>
+                    </div>
+                <?php endforeach; ?>
+            <?php endif; ?>
+            <?php $addInfoBlock = $block->getProductAdditionalInformationBlock(); ?>
+            <?php if ($addInfoBlock): ?>
+                <?= $addInfoBlock->setItem($_item)->toHtml() ?>
+            <?php endif; ?>
+            <div class="product-item-details__actions">
+                <div class="field qty">
+                    <div class="control qty">
+                        <label for="cart-<?= $block->escapeHtmlAttr($_item->getId()) ?>-qty">
+                            <input id="cart-<?= $block->escapeHtmlAttr($_item->getId()) ?>-qty"
+                                   name="cart[<?= $block->escapeHtmlAttr($_item->getId()) ?>][qty]"
+                                   data-cart-item-id="<?= $block->escapeHtmlAttr($_item->getSku()) ?>"
+                                   value="<?= $block->escapeHtmlAttr($block->getQty()) ?>"
+                                   type="number"
+                                   size="4"
+                                   step="any"
+                                   title="<?= $block->escapeHtmlAttr(__('Qty')) ?>"
+                                   class="input-text qty"
+                                   data-validate="{required:true,'validate-greater-than-zero':true}"
+                                   data-item-qty="<?= $block->escapeHtmlAttr($block->getQty()) ?>"
+                                   data-role="cart-item-qty"/>
+                        </label>
+                    </div>
+                </div>
+                <div class="actions-toolbar">
+                    <?= /* @noEscape */ $block->getActions($_item) ?>
+                </div>
+            </div>
+                <div class="product-item__advr-top">
+                    <ul class="product-item__advr-list">
+                        <li class="product-item__advr-item">
+                            <p class="product-item__advr-title">Op voorraad</p>
+                            <span>+</span>
+                        </li>
+                        <li class="product-item__advr-item">
+                            <p class="product-item__advr-subtitle">Select <span>bezorgopties</span></p>
+                        </li>
+                    </ul>
+                    <p class="product-item__advr-text">Voor 23:59 besteld, morgen in huis</p>
+                </div>
+        </div>
+    </td>
+
+    <?php if ($canApplyMsrp): ?>
+        <td class="col msrp" data-th="<?= $block->escapeHtml(__('Price')) ?>">
+                <span class="pricing msrp">
+                    <span class="msrp notice"><?= $block->escapeHtml(__('See price before order confirmation.')) ?></span>
+                    <?php $helpLinkId = 'cart-msrp-help-' . $_item->getId(); ?>
+                    <a href="#" class="action help map"
+                       id="<?= ($block->escapeHtmlAttr($helpLinkId)) ?>"
+                       data-mage-init='{"addToCart":{
+                                            "origin": "info",
+                                            "helpLinkId": "#<?= $block->escapeJs($block->escapeHtml($helpLinkId)) ?>",
+                                            "productName": "<?= $block->escapeJs($block->escapeHtml($product->getName())) ?>",
+                                            "showAddToCart": false
+                                            }
+                                        }'
+                    >
+                        <span><?= $block->escapeHtml(__("What's this?")) ?></span>
+                    </a>
+                </span>
+        </td>
+    <?php else: ?>
+    <?php endif; ?>
+
+    <td class="col subtotal" data-th="<?= $block->escapeHtml(__('Subtotal')) ?>">
+        <?php if ($canApplyMsrp): ?>
+            <span class="cart msrp subtotal">--</span>
+        <?php else: ?>
+            <?= $block->getRowTotalHtml($_item) ?>
+        <?php endif; ?>
+    </td>
+</tr>
+<tr>
+    <td>
+        <div class="product-item__advr-bottom">
+            <p class="product-item__advr-seller">Sell by:</p>
+            <p class="product-item__advr-link" data-mage-init='{"toggleAdvanced": {"selectorsToggleClass": "active", "toggleContainers": "#modal-seller-info, #seller-overlay"}}'>bol.com</p>
+        </div>
+        <div class="langs__list-wrapper seller-info" id="modal-seller-info">
+            <div class="seller-info__top">
+                <h3 class="sorter-info__top-title"><?= $block->escapeHtml($product->getName()) ?></h3>
+                <button class="sorter-info__top-btn langs__list-close-btn" id="langs-close-btn" data-mage-init='{"toggleAdvanced": {"selectorsToggleClass": "active", "toggleContainers": "#modal-seller-info, #seller-overlay"}}'>&times;</button>
+            </div>
+            <div class="seller-info__desc">
+                <p class="seller-info__desc-raiting">8,9</p>
+                <ul class="seller-info__desc-items">
+                    <li class="seller-info__desc-item">
+                        <p class="seller-info__desc-title">Best prices</p>
+                    </li>
+                    <li class="seller-info__desc-item">
+                        <a class="seller-info__desc-reviews-link" href="#">263 customer reviews</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="seller-info__main">
+                <p class="seller-info__main-desc">
+                    You buy from our partner Best prices. The seller is the first contact person for questions and return conditions after purchase. You can order and pay via bol.com.
+                </p>
+                <ul class="seller-info__main-expect">
+                    <li class="seller-info__main-expect-item">What to expect</li>
+                    <li class="seller-info__main-expect-item">Order and pay via bol.com</li>
+                    <li class="seller-info__main-expect-item">Including shipping costs, sent by bol.com</li>
+                    <li class="seller-info__main-expect-item">Pick up at a bol.com collection point possible</li>
+                    <li class="seller-info__main-expect-item">30 days to change your mind and free returns</li>
+                    <li class="seller-info__main-expect-item">Legal guarantee via Best prices</li>
+                </ul>
+
+                <p class="seller-info__main-title">Customer service</p>
+                <p class="seller-info__main-desc">
+                    You can also easily contact us if you buy from a partner. Ask your questions via the order in your account, the customer service page or view the seller's page.
+                </p>
+                <a class="seller-info__main-link" href="#">To customer service</a>
+            </div>
+            <div class="seller-info__bottom">
+                <p class="seller-info__bottom-back" data-mage-init='{"toggleAdvanced": {"selectorsToggleClass": "active", "toggleContainers": "#modal-seller-info, #seller-overlay"}}'>Back</p>
+                <a class="seller-info__bottom-more" href="#">More about Best prices</a>
+            </div>
+        </div>
+        <div id="seller-overlay" data-mage-init='{"toggleAdvanced": {"selectorsToggleClass": "active", "baseToggleClass": "", "toggleContainers": "#modal-seller-info, #seller-overlay"}}'></div>
+    </td>
+</tr>
+</tbody>
