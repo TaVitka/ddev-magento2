@@ -136,17 +136,18 @@ $canApplyMsrp = $helper->isShowBeforeOrderConfirm($product) && $helper->isMinima
         <?php endif; ?>
     </td>
 </tr>
-<tr>
-    <td>
-        <div class="product-item__advr-bottom">
-            <p class="product-item__advr-seller">Sell by:</p>
-            <p class="product-item__advr-link" data-mage-init='{"toggleAdvanced": {"selectorsToggleClass": "active", "toggleContainers": "#modal-seller-info, #seller-overlay"}}'>bol.com</p>
+<tr class="item-info">
+    <td class="col item product-item__advr" data-th="<?= $block->escapeHtml(__('Item')) ?>">
+    <div class="product-item__advr-bottom">
+        <p class="product-item__advr-seller">Sell by:</p>
+        <p class="product-item__advr-link" data-mage-init='{"toggleAdvanced": {"selectorsToggleClass": "active", "toggleContainers": "#modal-seller-info-<?php echo $product->getId() ?>, #seller-overlay-<?php echo $product->getId() ?>"}}'>bol.com</p>
+    </div>
+    <div class="langs__list-wrapper seller-info" id="modal-seller-info-<?php echo $product->getId() ?>">
+        <div class="seller-info__top">
+            <h3 class="sorter-info__top-title"><?= $block->escapeHtml($block->getProductName()) ?></h3>
+            <button class="sorter-info__top-btn langs__list-close-btn" id="langs-close-btn" data-mage-init='{"toggleAdvanced": {"selectorsToggleClass": "active", "toggleContainers": "#modal-seller-info-<?php echo $product->getId() ?>, #seller-overlay-<?php echo $product->getId() ?>"}}'>&times;</button>
         </div>
-        <div class="langs__list-wrapper seller-info" id="modal-seller-info">
-            <div class="seller-info__top">
-                <h3 class="sorter-info__top-title"><?= $block->escapeHtml($product->getName()) ?></h3>
-                <button class="sorter-info__top-btn langs__list-close-btn" id="langs-close-btn" data-mage-init='{"toggleAdvanced": {"selectorsToggleClass": "active", "toggleContainers": "#modal-seller-info, #seller-overlay"}}'>&times;</button>
-            </div>
+        <div class="seller-info__wrapper">
             <div class="seller-info__desc">
                 <p class="seller-info__desc-raiting">8,9</p>
                 <ul class="seller-info__desc-items">
@@ -162,15 +163,14 @@ $canApplyMsrp = $helper->isShowBeforeOrderConfirm($product) && $helper->isMinima
                 <p class="seller-info__main-desc">
                     You buy from our partner Best prices. The seller is the first contact person for questions and return conditions after purchase. You can order and pay via bol.com.
                 </p>
-                <ul class="seller-info__main-expect">
-                    <li class="seller-info__main-expect-item">What to expect</li>
+                <p class="seller-info__main-expect-title">What to expect</p>
+                <ul class="seller-info__main-expect-items">
                     <li class="seller-info__main-expect-item">Order and pay via bol.com</li>
-                    <li class="seller-info__main-expect-item">Including shipping costs, sent by bol.com</li>
+                    <li class="seller-info__main-expect-item"><strong>Including</strong> shipping costs, sent by bol.com</li>
                     <li class="seller-info__main-expect-item">Pick up at a bol.com collection point possible</li>
-                    <li class="seller-info__main-expect-item">30 days to change your mind and free returns</li>
+                    <li class="seller-info__main-expect-item">30 days to change your mind and <strong>free</strong> returns</li>
                     <li class="seller-info__main-expect-item">Legal guarantee via Best prices</li>
                 </ul>
-
                 <p class="seller-info__main-title">Customer service</p>
                 <p class="seller-info__main-desc">
                     You can also easily contact us if you buy from a partner. Ask your questions via the order in your account, the customer service page or view the seller's page.
@@ -178,11 +178,12 @@ $canApplyMsrp = $helper->isShowBeforeOrderConfirm($product) && $helper->isMinima
                 <a class="seller-info__main-link" href="#">To customer service</a>
             </div>
             <div class="seller-info__bottom">
-                <p class="seller-info__bottom-back" data-mage-init='{"toggleAdvanced": {"selectorsToggleClass": "active", "toggleContainers": "#modal-seller-info, #seller-overlay"}}'>Back</p>
+                <p class="seller-info__bottom-back" data-mage-init='{"toggleAdvanced": {"selectorsToggleClass": "active", "toggleContainers": "#modal-seller-info-<?php echo $product->getId() ?>, #seller-overlay-<?php echo $product->getId() ?>"}}'>Back</p>
                 <a class="seller-info__bottom-more" href="#">More about Best prices</a>
             </div>
         </div>
-        <div id="seller-overlay" data-mage-init='{"toggleAdvanced": {"selectorsToggleClass": "active", "baseToggleClass": "", "toggleContainers": "#modal-seller-info, #seller-overlay"}}'></div>
-    </td>
+    </div>
+    <div class='seller-overlay' id="seller-overlay-<?php echo $product->getId() ?>" data-mage-init='{"toggleAdvanced": {"selectorsToggleClass": "active", "baseToggleClass": "", "toggleContainers": "#modal-seller-info-<?php echo $product->getId() ?>, #seller-overlay-<?php echo $product->getId() ?>"}}'></div>
+</td>
 </tr>
 </tbody>
