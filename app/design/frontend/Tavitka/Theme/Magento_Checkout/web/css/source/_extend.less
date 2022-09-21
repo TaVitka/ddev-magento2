@@ -63,21 +63,121 @@
         }
     }
     // End if cart empty
-    // Styles for seller poup-up
+    // Styles for seller pop-up
         .seller-info {
             max-width: 700px;
             width: 100%;
-            height: 85vh;
+            height: 75vh;
             overflow-y: scroll;
+            padding: 10px 0 60px;
+            font-size: 14px;
+            a[class] {
+                color: @accentblue-light;
+                font-size: inherit;
+            }
             .seller-info__top {
-                //display: flex;
-                //align-items: center;
+                padding: 0 60px;
+                text-align: center;
+                border-bottom: 1px solid @accentgrey-light;
+                position: relative;
+                height: 70px;
                 .sorter-info__top-title {
                     margin-right: 0;
+                    line-height: 70px;
+                    height: inherit;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    font-weight: 700;
+                    font-size: 20px;
+                }
+                .sorter-info__top-btn {
+                    position: absolute;
+                    top: calc(50% - 30px/2);
+                    right: 15px;
+                }
+            }
+            .seller-info__wrapper {
+                padding: 25px;
+                .seller-info__desc {
+                    margin-bottom: 15px;
+                    display: flex;
+                    &-raiting {
+                        padding: 5px;
+                        margin-right: 10px;
+                        color: @white;
+                        background-color: @accentblue;
+                        min-width: 40px;
+                        font-size: 22px;
+                        font-weight: 900;
+                        border-radius: 5px;
+                        text-align: center;
+                        align-self: center;
+                    }
+                    &-item {
+                        margin-bottom: 0;
+                    }
+                    &-title {
+                        line-height: 1;
+                        font-size: 24px;
+                        font-weight: 900;
+                    }
+                }
+                .seller-info__main {
+                    &-desc,
+                    &-expect-items {
+                        margin-bottom: 25px;
+                    }
+                    &-expect-title {
+                        margin-bottom: 15px;
+                    }
+                    &-expect-item {
+                        padding-left: 25px;
+                        position: relative;
+                        margin-bottom: 5px;
+                        &:before {
+                            content: '\e610';
+                            position: absolute;
+                            left: 10px;
+                            font-size: 12px;
+                            line-height: 20px;
+                            font-family: 'luma-icons';
+                            vertical-align: middle;
+                            display: inline-block;
+                            color: @accentgreen;
+                        }
+                        strong {
+                            font-style: italic;
+                        }
+                    }
+                    &-title {
+                        margin-bottom: 10px;
+                        font-weight: 700;
+                        font-size: 16px;
+                    }
+                }
+                .seller-info__bottom {
+                    display: flex;
+                    align-items: center;
+                    padding: 40px 25px 25px;
+                    &-back {
+                        box-shadow: rgba(10, 10, 10, 0.25) 0px 4px 0px -2px;
+                        background-color: @accentblue-light;
+                        color: @white;
+                        padding: 15px 25px;
+                        margin-right: 25px;
+                        cursor: pointer;
+                        font-size: 16px;
+                        transition: all 0.4s ease-in-out;
+                        &:hover,
+                        &:active {
+                            background-color: #3d40ff;
+                        }
+                    }
                 }
             }
         }
-    // End styles for seller poup-up
+    // End styles for seller pop-up
 }
 
 
