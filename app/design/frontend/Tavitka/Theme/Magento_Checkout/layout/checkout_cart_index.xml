@@ -13,6 +13,13 @@
                 <argument translate="true" name="text" xsi:type="string">Overview</argument>
             </arguments>
         </referenceBlock>
-
+        <referenceBlock name="checkout.cart.item.renderers.default.actions.edit" remove="true"/>
+        <referenceBlock name="checkout.cart.item.renderers.configurable.actions.edit" remove="true"/>
+        <referenceBlock name="checkout.cart.item.renderers.simple.actions.edit" remove="true"/>
+        <referenceBlock name="checkout.cart.item.renderers.virtual.actions.edit" remove="true"/>
+        <referenceBlock name="checkout.cart.item.renderers.giftcard.actions.edit" remove="true"/>
+        <referenceBlock name="checkout.cart.item.renderers.grouped.actions.edit" remove="true"/>
+        <referenceBlock name="checkout.cart.item.renderers.downloadable.actions.edit" remove="true"/>
+        <referenceBlock name="checkout.cart.item.renderers.bundle.actions.edit" remove="true"/>
     </body>
 </page>
