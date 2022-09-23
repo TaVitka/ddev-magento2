@@ -1,0 +1,33 @@
+<?php
+/**
+ * Copyright © Elogic. All rights reserved.
+ * See https://elogic.co for license details.
+ */
+
+?>
+<?php
+/** @var $block \Magento\Checkout\Block\Cart */
+?>
+<?php if (!$block->hasError()) :?>
+    <?php $methods = $block->getMethods('methods') ?: $block->getMethods('top_methods') ?>
+    <ul class="checkout methods items checkout-methods-items">
+        <?php foreach ($methods as $method) :?>
+            <?php $methodHtml = $block->getMethodHtml($method); ?>
+            <?php if (trim($methodHtml) !== '') :?>
+                <li class="item"><?= /* @noEscape */ $methodHtml ?></li>
+            <?php endif; ?>
+        <?php endforeach; ?>
+    </ul>
+    <div class="payment-methods">
+        <ul class="payment-methods__options">
+            <?php for ($i = 1; $i < 5; $i++): ?>
+                <li class="payment-methods__option">
+                    <img class="payment-methods__option-img" src="<?php echo $this->getViewFileUrl('images/cart-page-icons/payment-method-option-'.$i.'.svg'); ?>">
+                </li>
+            <?php endfor; ?>
+        </ul>
+        <p class="payment-methods__option-text">
+            or opt for convenience with 'Pay afterwards'
+        </p>
+    </div>
+<?php endif; ?>
