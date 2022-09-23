@@ -1,7 +1,7 @@
 <?php
 /**
- * Copyright © Magento, Inc. All rights reserved.
- * See COPYING.txt for license details.
+ * Copyright © Elogic. All rights reserved.
+ * See https://elogic.co for license details.
  */
 
 // phpcs:disable Magento2.Templates.ThisInTemplate
@@ -34,10 +34,9 @@ $canApplyMsrp = $helper->isShowBeforeOrderConfirm($product) && $helper->isMinima
         </span>
     <?php endif; ?>
         <div class="product-item-details">
-            <p class="product-item-country"><?= $product->getAttributeText('country_of_manufacture'); ?></p>
             <strong class="product-item-name">
                 <?php if ($block->hasProductUrl()): ?>
-                    <a href="<?= $block->escapeUrl($block->getProductUrl()) ?>"><?= $block->escapeHtml($block->getProductName()) ?></a>
+                    <a class="product-item-name__link" href="<?= $block->escapeUrl($block->getProductUrl()) ?>"><?= $block->escapeHtml($block->getProductName()) ?></a>
                 <?php else: ?>
                     <?= $block->escapeHtml($block->getProductName()) ?>
                 <?php endif; ?>
@@ -70,21 +69,26 @@ $canApplyMsrp = $helper->isShowBeforeOrderConfirm($product) && $helper->isMinima
             <?php endif; ?>
             <div class="product-item-details__actions">
                 <div class="field qty">
-                    <div class="control qty">
-                        <label for="cart-<?= $block->escapeHtmlAttr($_item->getId()) ?>-qty">
-                            <input id="cart-<?= $block->escapeHtmlAttr($_item->getId()) ?>-qty"
-                                   name="cart[<?= $block->escapeHtmlAttr($_item->getId()) ?>][qty]"
-                                   data-cart-item-id="<?= $block->escapeHtmlAttr($_item->getSku()) ?>"
-                                   value="<?= $block->escapeHtmlAttr($block->getQty()) ?>"
-                                   type="number"
-                                   size="4"
-                                   step="any"
-                                   title="<?= $block->escapeHtmlAttr(__('Qty')) ?>"
-                                   class="input-text qty"
-                                   data-validate="{required:true,'validate-greater-than-zero':true}"
-                                   data-item-qty="<?= $block->escapeHtmlAttr($block->getQty()) ?>"
-                                   data-role="cart-item-qty"/>
-                        </label>
+                    <div class="control qty" data-th="<?= $block->escapeHtml(('Qty')) ?>">
+                        <label for="cart-<?= $block->escapeHtmlAttr($_item->getId()) ?>-qty"></label>
+                        <select id="cart-<?= $block->escapeHtmlAttr($_item->getId()) ?>-qty"
+                                name="cart[<?= $block->escapeHtmlAttr($_item->getId()) ?>][qty]"
+                                data-cart-item-id="<?= $block->escapeHtmlAttr($_item->getSku()) ?>"
+                                data-role="cart-item-qty"
+                                class="input-text qty"
+                                data-validate="{required:true,'validate-greater-than-zero':true}">
+                            <option  value="1" <?php if($block->getQty() == 1){echo "selected='selected' "; } ?> >1</option>
+                            <option  value="2" <?php if($block->getQty() == 2){echo "selected='selected' "; } ?> >2</option>
+                            <option  value="3" <?php if($block->getQty() == 3){echo "selected='selected' "; } ?> >3</option>
+                            <option  value="4" <?php if($block->getQty() == 4){echo "selected='selected' "; } ?> >4</option>
+                            <option  value="5" <?php if($block->getQty() == 5){echo "selected='selected' "; } ?> >5</option>
+                            <option  value="6" <?php if($block->getQty() == 6){echo "selected='selected' "; } ?> >6</option>
+                            <option  value="7" <?php if($block->getQty() == 7){echo "selected='selected' "; } ?> >7</option>
+                            <option  value="8" <?php if($block->getQty() == 8){echo "selected='selected' "; } ?> >8</option>
+                            <option  value="9" <?php if($block->getQty() == 9){echo "selected='selected' "; } ?> >9</option>
+                            <option  value="10" <?php if($block->getQty() == 10){echo "selected='selected' "; } ?> >10</option>
+                            <option  value="Meer" <?php if($block->getQty() >= 11){echo "selected='selected' "; } ?> >Meer</option>
+                        </select>
                     </div>
                 </div>
                 <div class="actions-toolbar">
@@ -136,10 +140,10 @@ $canApplyMsrp = $helper->isShowBeforeOrderConfirm($product) && $helper->isMinima
         <?php endif; ?>
     </td>
 </tr>
-<tr class="item-info">
+<tr class="item-info-bottom">
     <td class="col item product-item__advr" data-th="<?= $block->escapeHtml(__('Item')) ?>">
     <div class="product-item__advr-bottom">
-        <p class="product-item__advr-seller">Sell by:</p>
+        <p class="product-item__advr-seller">Sell by: </p>
         <p class="product-item__advr-link" data-mage-init='{"toggleAdvanced": {"selectorsToggleClass": "active", "toggleContainers": "#modal-seller-info-<?php echo $product->getId() ?>, #seller-overlay-<?php echo $product->getId() ?>"}}'>bol.com</p>
     </div>
     <div class="langs__list-wrapper seller-info" id="modal-seller-info-<?php echo $product->getId() ?>">
@@ -185,5 +189,16 @@ $canApplyMsrp = $helper->isShowBeforeOrderConfirm($product) && $helper->isMinima
     </div>
     <div class='seller-overlay' id="seller-overlay-<?php echo $product->getId() ?>" data-mage-init='{"toggleAdvanced": {"selectorsToggleClass": "active", "baseToggleClass": "", "toggleContainers": "#modal-seller-info-<?php echo $product->getId() ?>, #seller-overlay-<?php echo $product->getId() ?>"}}'></div>
 </td>
+</tr>
+<tr>
+    <td>
+        <button type="submit"
+                name="update_cart_action"
+                data-cart-item-update=""
+                value="update_qty"
+                title="<?= $block->escapeHtml(__('Update Shopping Cart')) ?>"
+                class="action update">
+        </button>
+    </td>
 </tr>
 </tbody>
