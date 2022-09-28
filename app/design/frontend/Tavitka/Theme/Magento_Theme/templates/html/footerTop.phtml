@@ -1,33 +1,36 @@
 <div class="footer-top__wrapper">
-        <div class="container">
-            <div class="footer-top">
-                <h2 class="footer-top__title">Service & contact</h2>
-                <ul class="footer-top__items">
-                    <li class="footer-top__item">
-                        <img class="footer-top__item-icon" src="<?= $block->getViewFileUrl('images/footer-user-icon.svg'); ?>" alt="footer user icon">
-                        <div class="footer-top__item-text">
-                            <p class="footer-top__item-name">Snel regelen in je account</p>
-                            <p class="footer-top__item-desc">
-                                <a class="footer-top__item-link" href="#">Volg je bestelling</a> ,
-                                <a class="footer-top__item-link" href="#">betaal facturen</a> of
-                                <a class="footer-top__item-link" href="#">retourneer een artikel</a>.
-                            </p>
-                        </div>
-                    </li>
-                    <li class="footer-top__item">
-                        <img class="footer-top__item-icon" src="<?= $block->getViewFileUrl('images/footer-contact-icon.svg'); ?>" alt="footer contact icon">
-                        <div class="footer-top__item-text">
-                            <p class="footer-top__item-name">Heb je ons nodig?</p>
-                            <p class="footer-top__item-desc">
-                                We helpen je graag.
-                                <a class="footer-top__item-link" href="#">Onze klantenservice</a>
-                                 is dag en nacht open.
-                            </p>
-                        </div>
-                    </li>
-                </ul>
-            </div>
+    <div class="container">
+        <div class="footer-top">
+            <h2 class="footer-top__title"><?= __('Service & Contact') ?></h2>
+            <ul class="footer-top__items">
+                <li class="footer-top__item">
+                    <img class="footer-top__item-icon"
+                         src="<?= $block->getViewFileUrl('images/footer-user-icon.svg'); ?>" alt="footer user icon">
+                    <div class="footer-top__item-text">
+                        <p class="footer-top__item-name"><?= __('Arrange quickly in your account') ?></p>
+                        <p class="footer-top__item-desc">
+                            <a class="footer-top__item-link" href="#"><?= __('Track your order') ?></a><?= __(' ,') ?>
+                            <a class="footer-top__item-link" href="#"><?= __('Pay bills') ?></a><?= __(' or') ?>
+                            <a class="footer-top__item-link" href="#"><?= __('Return an item') ?></a>.
+                        </p>
+                    </div>
+                </li>
+                <li class="footer-top__item">
+                    <img class="footer-top__item-icon"
+                         src="<?= $block->getViewFileUrl('images/footer-contact-icon.svg'); ?>"
+                         alt="footer contact icon">
+                    <div class="footer-top__item-text">
+                        <p class="footer-top__item-name"><?= __('Do you need us?') ?></p>
+                        <p class="footer-top__item-desc">
+                            <?= __('We are happy to help you.') ?>
+                            <a class="footer-top__item-link" href="#"><?= __('Our customer service') ?></a>
+                            <?= __('is open day and night.') ?>
+                        </p>
+                    </div>
+                </li>
+            </ul>
         </div>
+    </div>
 </div>
 
 

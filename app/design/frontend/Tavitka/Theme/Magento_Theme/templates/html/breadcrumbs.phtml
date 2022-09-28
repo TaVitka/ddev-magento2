@@ -8,7 +8,7 @@
 <div class="breadcrumbs">
     <ul class="items">
         <li class="item back">
-            <a class="item-link--back" href="javascript:history.go(-1)" title="back">Retour</a>
+            <a class="item-link--back" href="javascript:history.go(-1)" title="back"><?= __('Return') ?></a>
         </li>
         <?php foreach ($crumbs as $crumbName => $crumbInfo) : ?>
             <li class="item <?= $block->escapeHtmlAttr($crumbName) ?>">
