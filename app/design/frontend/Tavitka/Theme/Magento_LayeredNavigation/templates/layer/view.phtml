@@ -28,12 +28,12 @@
         }
     }'>
         <?php $filtered = count($block->getLayer()->getState()->getFilters()) ?>
-        <div class="block-title filter-title" data-count="<?= /* @noEscape */ $filtered ?>">
+        <div class="block-title filter-title" data-count="<?= /* @noEscape */
+        $filtered ?>">
             <strong data-role="title"><?= $block->escapeHtml(__('Shop By')); ?></strong>
         </div>
         <div class="block-content filter-content">
             <?= $block->getChildHtml('state') ?>
-
             <?php if ($block->getLayer()->getState()->getFilters()) : ?>
                 <div class="block-actions filter-actions">
                     <a href="<?= $block->escapeUrl($block->getClearUrl()) ?>" class="action clear filter-clear">
@@ -43,9 +43,9 @@
             <?php endif; ?>
             <?php $wrapOptions = false; ?>
             <?php foreach ($block->getFilters() as $filter) : ?>
-                <?php if ($filter->getItemsCount()) : ?>
-                    <?php if (!$wrapOptions) : ?>
-                        <div class="filter-options" id="narrow-by-list" data-role="content" data-mage-init='
+        <?php if ($filter->getItemsCount()) : ?>
+        <?php if (!$wrapOptions) : ?>
+            <div class="filter-options" id="narrow-by-list" data-role="content" data-mage-init='
                         {
                             "accordion":
                             {
@@ -55,39 +55,44 @@
                                 "multipleCollapsible": true
                             }
                         }'>
-                        <?php $wrapOptions = true;
-                        endif; ?>
-                    <div data-role="collapsible" class="filter-options-item">
-                        <div data-role="title" class="filter-options-title"><?= $block->escapeHtml(__($filter->getName())) ?></div>
-                        <div data-role="content" class="filter-options-content" id="filter-<?= $block->escapeHtml(__($filter->getName())) ?>">
-                            <?= /* @noEscape */ $block->getChildBlock('renderer')->render($filter) ?>
-                            <?php if ($filter->getItemsCount() > 3 && $block->escapeHtml(__($filter->getName())) !== 'Size' && $block->escapeHtml(__($filter->getName())) !== 'Color' && $block->escapeHtml(__($filter->getName())) !== 'Grootte' && $block->escapeHtml(__($filter->getName())) !== 'Kleur' ): ?>
-                                <button class="items-more" data-mage-init='{"toggleAdvanced": {"selectorsToggleClass": "active", "baseToggleClass": "active", "toggleContainers": "#filter-<?= $block->escapeHtml(__($filter->getName())) ?>"}}'>Meer</button>
-                            <?php endif; ?>
-                        </div>
-
+                <?php $wrapOptions = true;
+                endif; ?>
+                <div data-role="collapsible" class="filter-options-item">
+                    <div data-role="title"
+                         class="filter-options-title"><?= $block->escapeHtml(__($filter->getName())) ?></div>
+                    <div data-role="content" class="filter-options-content"
+                         id="filter-<?= $block->escapeHtml(__($filter->getName())) ?>">
+                        <?= /* @noEscape */
+                        $block->getChildBlock('renderer')->render($filter) ?>
+                        <?php if ($filter->getItemsCount() > 3 && $block->escapeHtml(__($filter->getName())) !== 'Size' && $block->escapeHtml(__($filter->getName())) !== 'Color' && $block->escapeHtml(__($filter->getName())) !== 'Grootte' && $block->escapeHtml(__($filter->getName())) !== 'Kleur'): ?>
+                            <button class="items-more"
+                                    data-mage-init='{"toggleAdvanced": {"selectorsToggleClass": "active", "baseToggleClass": "active", "toggleContainers": "#filter-<?= $block->escapeHtml(__($filter->getName())) ?>"}}'>
+                                Meer
+                            </button>
+                        <?php endif; ?>
                     </div>
-                <?php endif; ?>
-            <?php endforeach; ?>
-            <?php if ($wrapOptions) : ?>
                 </div>
-            <?php else : ?>
-                <script>
-                    require([
-                        'jquery'
-                    ], function ($) {
-                        $('#layered-filter-block').addClass('filter-no-options');
-                        $('#narrow-by-list').on("dimensionsChanged", function (event, data) {
-                            var opened = data.opened;
+                <?php endif; ?>
+                <?php endforeach; ?>
+                <?php if ($wrapOptions) : ?>
+            </div>
+        <?php else : ?>
+            <script>
+                require([
+                    'jquery'
+                ], function ($) {
+                    $('#layered-filter-block').addClass('filter-no-options');
+                    $('#narrow-by-list').on("dimensionsChanged", function (event, data) {
+                        var opened = data.opened;
+                        if (opened) {
+                            let filterItems = document.getElementsByClassName('item');
+                            let itemCount = filterItems.length;
+                            return;
 
-                            if (opened) {
-                                let filterItems = document.getElementsByClassName('item');
-                                let itemCount = filterItems.length;
-                                return;
-                            }
-                        });
+                        }
                     });
-                </script>
+                });
+            </script>
             <?php endif; ?>
         </div>
     </div>

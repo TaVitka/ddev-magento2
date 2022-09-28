@@ -13,7 +13,6 @@
 // We should use strlen function because coupon code could be "0", converted to bool will lead to false
 $hasCouponCode = $block->getCouponCode() !== null && strlen($block->getCouponCode()) > 0;
 ?>
-
 <div class="block discount"
      id="block-discount"
     <?php
@@ -74,7 +73,7 @@ $hasCouponCode = $block->getCouponCode() !== null && strlen($block->getCouponCod
     </div>
     <?php else: ?> >
     <div class="title-logged-out">
-        <a href="<?php echo $this->getUrl('customer/account/login'); ?>">Enter gift card code</a>
+        <a href="<?php echo $this->getUrl('customer/account/login'); ?>"><?= __('Enter gift card code') ?></a>
     </div>
     <?php endif; ?>
 </div>

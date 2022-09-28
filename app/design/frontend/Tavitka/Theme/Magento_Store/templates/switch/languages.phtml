@@ -20,10 +20,9 @@
             <a class="langs__list-logo" href="https://ddev-magento2.ddev.site/index.php/en/" title="" aria-label="store logo">
                 <img src="https://ddev-magento2.ddev.site/static/version1659533145/frontend/Tavitka/Theme/en_US/images/logo_blue.svg" title="" alt="">
             </a>
-            <span class="langs__list-subtitle">Choose your bol.com</span>
-            <h3 class="langs__list-title">How do you want to use bol.com?</h3>
-            <p class="langs__list-desc">Language / Taal</p>
-
+            <span class="langs__list-subtitle"><?= __('Choose your bol.com') ?></span>
+            <h3 class="langs__list-title"><?= __('How do you want to use bol.com?') ?></h3>
+            <p class="langs__list-desc"><?= __('Language / Taal') ?></p>
             <ul class="langs__list">
             <?php foreach ($this->getStores() as $_lang): ?>
                 <?php if ($_lang->getCode() != 'default'): ?>

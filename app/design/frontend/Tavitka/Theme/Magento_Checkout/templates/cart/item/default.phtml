@@ -36,7 +36,8 @@ $canApplyMsrp = $helper->isShowBeforeOrderConfirm($product) && $helper->isMinima
         <div class="product-item-details">
             <strong class="product-item-name">
                 <?php if ($block->hasProductUrl()): ?>
-                    <a class="product-item-name__link" href="<?= $block->escapeUrl($block->getProductUrl()) ?>"><?= $block->escapeHtml($block->getProductName()) ?></a>
+                    <a class="product-item-name__link"
+                       href="<?= $block->escapeUrl($block->getProductUrl()) ?>"><?= $block->escapeHtml($block->getProductName()) ?></a>
                 <?php else: ?>
                     <?= $block->escapeHtml($block->getProductName()) ?>
                 <?php endif; ?>
@@ -47,18 +48,20 @@ $canApplyMsrp = $helper->isShowBeforeOrderConfirm($product) && $helper->isMinima
                     <div class="rating-result" id="rating-result_1365" title="0%">
                         <span style="width: 0%;"><span>0%</span></span>
                     </div>
-                    <script type="text/javascript">var elem1vwUSioe = document.querySelector('#rating-result_1365 span');
+                    <script
+                        type="text/javascript">var elem1vwUSioe = document.querySelector('#rating-result_1365 span');
                         if (elem1vwUSioe) {
                             elem1vwUSioe.style.width = '0%';
-                        }</script>            </div>
+                        }</script>
+                </div>
                 <div class="reviews-actions">
-                    <a class="action view" href="https://ddev-magento2.ddev.site/index.php/en/juno-jacket-xs-blue.html#reviews">(0)
-                    </a>
+                    <a class="action view"
+                       href="https://ddev-magento2.ddev.site/index.php/en/juno-jacket-xs-blue.html#reviews">(0)</a>
                 </div>
             </div>
             <?php if ($messages = $block->getMessages()): ?>
                 <?php foreach ($messages as $message): ?>
-                    <div class= "cart item message <?= $block->escapeHtmlAttr($message['type']) ?>">
+                    <div class="cart item message <?= $block->escapeHtmlAttr($message['type']) ?>">
                         <div><?= $block->escapeHtml($message['text']) ?></div>
                     </div>
                 <?php endforeach; ?>
@@ -75,45 +78,43 @@ $canApplyMsrp = $helper->isShowBeforeOrderConfirm($product) && $helper->isMinima
                                 name="cart[<?= $block->escapeHtmlAttr($_item->getId()) ?>][qty]"
                                 data-cart-item-id="<?= $block->escapeHtmlAttr($_item->getSku()) ?>"
                                 data-role="cart-item-qty"
-                                class="input-text qty"
+                                class="input-text qty select-qty"
                                 data-validate="{required:true,'validate-greater-than-zero':true}">
-                            <option  value="1" <?php if($block->getQty() == 1){echo "selected='selected' "; } ?> >1</option>
-                            <option  value="2" <?php if($block->getQty() == 2){echo "selected='selected' "; } ?> >2</option>
-                            <option  value="3" <?php if($block->getQty() == 3){echo "selected='selected' "; } ?> >3</option>
-                            <option  value="4" <?php if($block->getQty() == 4){echo "selected='selected' "; } ?> >4</option>
-                            <option  value="5" <?php if($block->getQty() == 5){echo "selected='selected' "; } ?> >5</option>
-                            <option  value="6" <?php if($block->getQty() == 6){echo "selected='selected' "; } ?> >6</option>
-                            <option  value="7" <?php if($block->getQty() == 7){echo "selected='selected' "; } ?> >7</option>
-                            <option  value="8" <?php if($block->getQty() == 8){echo "selected='selected' "; } ?> >8</option>
-                            <option  value="9" <?php if($block->getQty() == 9){echo "selected='selected' "; } ?> >9</option>
-                            <option  value="10" <?php if($block->getQty() == 10){echo "selected='selected' "; } ?> >10</option>
-                            <option  value="Meer" <?php if($block->getQty() >= 11){echo "selected='selected' "; } ?> >Meer</option>
+                            <?php for ($i = 1; $i < 11; $i++): ?>
+                                <option value="<?= $i ?>" <?php if ($block->getQty() == $i) {
+                                    echo "selected='selected' ";
+                                } ?> ><?= $i ?></option>
+                            <?php endfor; ?>
                         </select>
                     </div>
                 </div>
                 <div class="actions-toolbar">
-                    <?= /* @noEscape */ $block->getActions($_item) ?>
+                    <?= /* @noEscape */
+                    $block->getActions($_item) ?>
                 </div>
             </div>
+            <div class="product-item__advr">
                 <div class="product-item__advr-top">
                     <ul class="product-item__advr-list">
                         <li class="product-item__advr-item">
-                            <p class="product-item__advr-title">Op voorraad</p>
+                            <p class="product-item__advr-title"><?= __('In stock') ?></p>
                             <span>+</span>
                         </li>
                         <li class="product-item__advr-item">
-                            <p class="product-item__advr-subtitle">Select <span>bezorgopties</span></p>
+                            <p class="product-item__advr-subtitle"><?= __('Select') ?>
+                                <span><?= __('delivery options') ?></span></p>
                         </li>
                     </ul>
-                    <p class="product-item__advr-text">Voor 23:59 besteld, morgen in huis</p>
+                    <p class="product-item__advr-text"><?= __('Ordered before 23:59, delivered tomorrow') ?></p>
                 </div>
+            </div>
         </div>
     </td>
-
     <?php if ($canApplyMsrp): ?>
         <td class="col msrp" data-th="<?= $block->escapeHtml(__('Price')) ?>">
                 <span class="pricing msrp">
-                    <span class="msrp notice"><?= $block->escapeHtml(__('See price before order confirmation.')) ?></span>
+                    <span
+                        class="msrp notice"><?= $block->escapeHtml(__('See price before order confirmation.')) ?></span>
                     <?php $helpLinkId = 'cart-msrp-help-' . $_item->getId(); ?>
                     <a href="#" class="action help map"
                        id="<?= ($block->escapeHtmlAttr($helpLinkId)) ?>"
@@ -131,7 +132,6 @@ $canApplyMsrp = $helper->isShowBeforeOrderConfirm($product) && $helper->isMinima
         </td>
     <?php else: ?>
     <?php endif; ?>
-
     <td class="col subtotal" data-th="<?= $block->escapeHtml(__('Subtotal')) ?>">
         <?php if ($canApplyMsrp): ?>
             <span class="cart msrp subtotal">--</span>
@@ -142,53 +142,64 @@ $canApplyMsrp = $helper->isShowBeforeOrderConfirm($product) && $helper->isMinima
 </tr>
 <tr class="item-info-bottom">
     <td class="col item product-item__advr" data-th="<?= $block->escapeHtml(__('Item')) ?>">
-    <div class="product-item__advr-bottom">
-        <p class="product-item__advr-seller">Sell by: </p>
-        <p class="product-item__advr-link" data-mage-init='{"toggleAdvanced": {"selectorsToggleClass": "active", "toggleContainers": "#modal-seller-info-<?php echo $product->getId() ?>, #seller-overlay-<?php echo $product->getId() ?>"}}'>bol.com</p>
-    </div>
-    <div class="langs__list-wrapper seller-info" id="modal-seller-info-<?php echo $product->getId() ?>">
-        <div class="seller-info__top">
-            <h3 class="sorter-info__top-title"><?= $block->escapeHtml($block->getProductName()) ?></h3>
-            <button class="sorter-info__top-btn langs__list-close-btn" id="langs-close-btn" data-mage-init='{"toggleAdvanced": {"selectorsToggleClass": "active", "toggleContainers": "#modal-seller-info-<?php echo $product->getId() ?>, #seller-overlay-<?php echo $product->getId() ?>"}}'>&times;</button>
+        <div class="product-item__advr-bottom">
+            <p class="product-item__advr-seller"><?= __('Sell by: ') ?></p>
+            <p class="product-item__advr-link"
+               data-mage-init='{"toggleAdvanced": {"selectorsToggleClass": "active", "toggleContainers": "#modal-seller-info-<?php echo $product->getId() ?>, #seller-overlay-<?php echo $product->getId() ?>"}}'><?= __('bol.com') ?></p>
         </div>
-        <div class="seller-info__wrapper">
-            <div class="seller-info__desc">
-                <p class="seller-info__desc-raiting">8,9</p>
-                <ul class="seller-info__desc-items">
-                    <li class="seller-info__desc-item">
-                        <p class="seller-info__desc-title">Best prices</p>
-                    </li>
-                    <li class="seller-info__desc-item">
-                        <a class="seller-info__desc-reviews-link" href="#">263 customer reviews</a>
-                    </li>
-                </ul>
+        <div class="langs__list-wrapper seller-info" id="modal-seller-info-<?php echo $product->getId() ?>">
+            <div class="seller-info__top">
+                <h3 class="sorter-info__top-title"><?= $block->escapeHtml($block->getProductName()) ?></h3>
+                <button class="sorter-info__top-btn langs__list-close-btn" id="langs-close-btn"
+                        data-mage-init='{"toggleAdvanced": {"selectorsToggleClass": "active", "toggleContainers": "#modal-seller-info-<?php echo $product->getId() ?>, #seller-overlay-<?php echo $product->getId() ?>"}}'>
+                    &times;
+                </button>
             </div>
-            <div class="seller-info__main">
-                <p class="seller-info__main-desc">
-                    You buy from our partner Best prices. The seller is the first contact person for questions and return conditions after purchase. You can order and pay via bol.com.
-                </p>
-                <p class="seller-info__main-expect-title">What to expect</p>
-                <ul class="seller-info__main-expect-items">
-                    <li class="seller-info__main-expect-item">Order and pay via bol.com</li>
-                    <li class="seller-info__main-expect-item"><strong>Including</strong> shipping costs, sent by bol.com</li>
-                    <li class="seller-info__main-expect-item">Pick up at a bol.com collection point possible</li>
-                    <li class="seller-info__main-expect-item">30 days to change your mind and <strong>free</strong> returns</li>
-                    <li class="seller-info__main-expect-item">Legal guarantee via Best prices</li>
-                </ul>
-                <p class="seller-info__main-title">Customer service</p>
-                <p class="seller-info__main-desc">
-                    You can also easily contact us if you buy from a partner. Ask your questions via the order in your account, the customer service page or view the seller's page.
-                </p>
-                <a class="seller-info__main-link" href="#">To customer service</a>
-            </div>
-            <div class="seller-info__bottom">
-                <p class="seller-info__bottom-back" data-mage-init='{"toggleAdvanced": {"selectorsToggleClass": "active", "toggleContainers": "#modal-seller-info-<?php echo $product->getId() ?>, #seller-overlay-<?php echo $product->getId() ?>"}}'>Back</p>
-                <a class="seller-info__bottom-more" href="#">More about Best prices</a>
+            <div class="seller-info__wrapper">
+                <div class="seller-info__desc">
+                    <p class="seller-info__desc-raiting">8,9</p>
+                    <ul class="seller-info__desc-items">
+                        <li class="seller-info__desc-item">
+                            <p class="seller-info__desc-title"><?= __('Best prices') ?></p>
+                        </li>
+                        <li class="seller-info__desc-item">
+                            <a class="seller-info__desc-reviews-link" href="#"><?= __('263 customer reviews') ?></a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="seller-info__main">
+                    <p class="seller-info__main-desc">
+                        <?= __('You buy from our partner Best prices. The seller is the first contact person for questions and return conditions after purchase. You can order and pay via bol.com.') ?>
+                    </p>
+                    <p class="seller-info__main-expect-title"><?= __('What to expect') ?></p>
+                    <ul class="seller-info__main-expect-items">
+                        <li class="seller-info__main-expect-item"><?= __('Order and pay via bol.com') ?></li>
+                        <li class="seller-info__main-expect-item">
+                            <strong><?= __('Including') ?></strong><?= __('shipping costs, sent by bol.com') ?>'
+                        </li>
+                        <li class="seller-info__main-expect-item"><?= __('Pick up at a bol.com collection point possible') ?></li>
+                        <li class="seller-info__main-expect-item"><?= __('30 days to change your mind and ') ?>
+                            <strong><?= __('free') ?></strong><?= __(' returns') ?></li>
+                        <li class="seller-info__main-expect-item"><?= __('Legal guarantee via Best prices') ?></li>
+                    </ul>
+                    <p class="seller-info__main-title"><?= __('Customer service') ?></p>
+                    <p class="seller-info__main-desc">
+                        <?= __('You can also easily contact us if you buy from a partner. Ask your questions via the order in your account, the customer service page or view the seller\'s page.') ?>
+                    </p>
+                    <a class="seller-info__main-link" href="#"><?= __('To customer service') ?></a>
+                </div>
+                <div class="seller-info__bottom">
+                    <p class="seller-info__bottom-back"
+                       data-mage-init='{"toggleAdvanced": {"selectorsToggleClass": "active", "toggleContainers": "#modal-seller-info-<?php echo $product->getId() ?>, #seller-overlay-<?php echo $product->getId() ?>"}}'>
+                        <?= __('Back') ?>
+                    </p>
+                    <a class="seller-info__bottom-more" href="#"><?= __('More about Best prices') ?></a>
+                </div>
             </div>
         </div>
-    </div>
-    <div class='seller-overlay' id="seller-overlay-<?php echo $product->getId() ?>" data-mage-init='{"toggleAdvanced": {"selectorsToggleClass": "active", "baseToggleClass": "", "toggleContainers": "#modal-seller-info-<?php echo $product->getId() ?>, #seller-overlay-<?php echo $product->getId() ?>"}}'></div>
-</td>
+        <div class='seller-overlay' id="seller-overlay-<?php echo $product->getId() ?>"
+             data-mage-init='{"toggleAdvanced": {"selectorsToggleClass": "active", "baseToggleClass": "", "toggleContainers": "#modal-seller-info-<?php echo $product->getId() ?>, #seller-overlay-<?php echo $product->getId() ?>"}}'></div>
+    </td>
 </tr>
 <tr>
     <td>
@@ -197,7 +208,8 @@ $canApplyMsrp = $helper->isShowBeforeOrderConfirm($product) && $helper->isMinima
                 data-cart-item-update=""
                 value="update_qty"
                 title="<?= $block->escapeHtml(__('Update Shopping Cart')) ?>"
-                class="action update">
+                class="action update button-action-update"
+                style="display: none;">
         </button>
     </td>
 </tr>

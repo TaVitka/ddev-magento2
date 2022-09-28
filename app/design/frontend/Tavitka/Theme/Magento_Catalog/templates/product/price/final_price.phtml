@@ -23,7 +23,7 @@ $schema = ($block->getZone() == 'item_view') ? true : false;
         <?= /* @noEscape */ $block->renderAmount($finalPriceModel->getAmount()); ?>
     </span>
         <span class="old-price">
-            <a class="old-price-link" href="#">scherp geprijsd</a>
+            <a class="old-price-link" href="#"><?= __('high discount') ?></a>
         </span>
 <?php else :?>
     <?= /* @noEscape */ $block->renderAmount($finalPriceModel->getAmount(), [
@@ -33,7 +33,6 @@ $schema = ($block->getZone() == 'item_view') ? true : false;
         'schema' => $schema
     ]); ?>
 <?php endif; ?>
-
 <?php if ($block->showMinimalPrice()) :?>
     <?php if ($block->getUseLinkForAsLowAs()) :?>
         <a href="<?= $block->escapeUrl($block->getSaleableItem()->getProductUrl()) ?>" class="minimal-price-link">

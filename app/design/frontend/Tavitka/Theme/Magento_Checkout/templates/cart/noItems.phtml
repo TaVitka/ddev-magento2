@@ -12,8 +12,8 @@
     <img class="cart-empty__img-picture" src="<?php echo $this->getViewFileUrl('images/cart-page-icons/empty_cart.svg'); ?>" alt="">
     </div>
     <div class="cart-empty__info">
-        <h1 class="cart-empty__info-title">Your shopping cart is empty</h1>
-        <p class="cart-empty__info-subtitle">Looking for ideas?</p>
+        <h1 class="cart-empty__info-title"><?= __('Your shopping cart is empty') ?></h1>
+        <p class="cart-empty__info-subtitle"><?= __('Looking for ideas?')?></p>
         <ul class="cart-empty__info-buttons">
             <?php
             $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
@@ -23,7 +23,7 @@
             <?php else: ?>
             <li class="cart-empty__info-button cart-empty__info-button--blue">
                 <a class="cart-empty__info-link" href="<?php echo $this->getUrl('customer/account/login'); ?>">
-                    Login to view your shopping cart
+                    <?= __('Login to view your shopping cart') ?>
                 </a>
             </li>
             <?php endif; ?>

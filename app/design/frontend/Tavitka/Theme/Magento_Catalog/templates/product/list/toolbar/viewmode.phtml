@@ -18,7 +18,6 @@
             <strong class="modes-label" id="modes-label"><?= $block->escapeHtml(__('View as')) ?></strong>
             <?php foreach ($block->getModes() as $_code => $_label) :?>
                 <?php if ($block->isModeActive($_code)) :?>
-
                 <?php else :?>
                     <a class="modes-mode mode-<?= $block->escapeHtmlAttr(strtolower($_code)) ?>"
                        title="<?= $block->escapeHtmlAttr($_label) ?>"

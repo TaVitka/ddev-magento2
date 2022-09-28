@@ -1,8 +1,8 @@
-/**
-* Copyright © Elogic. All rights reserved.
-* See https://elogic.co for license details.
-*/
 <?php
+/**
+ * Copyright © Elogic. All rights reserved.
+ * See https://elogic.co for license details.
+ */
 $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
 $currentCategory = $objectManager->get(\Magento\Framework\Registry::class)->registry('current_category');
 $_helper = $this->helper('Magento\Catalog\Helper\Output');
@@ -11,7 +11,7 @@ $parentCategoryId = $parentCategory->getId();
 $_subCategory = $objectManager->create('Magento\Catalog\Model\Category')->load($parentCategoryId);
 $subCategories = $_subCategory->getChildrenCategories();
 ?>
-<ul  class="subcategory-slider" id="subcategory-slider">
+<ul class="subcategory-slider" id="subcategory-slider">
     <?php foreach ($subCategories as $subCategory): ?>
         <?php
         $_category = $objectManager->create('Magento\Catalog\Model\Category')->load($subCategory->getId());
@@ -20,14 +20,14 @@ $subCategories = $_subCategory->getChildrenCategories();
         $subCatName = $subCategory->getName();
         ?>
         <li class="subcategory-slider__item">
-                <a class="subcategory-slider__item-link" href="<?= $subCatUrl ?>">
-                    <img class="subcategory-slider__item-image" src="<?= $subCatImg ?>" alt="subcategory image of <?= $subCatName ?>" >
-                    <h3 class="subcategory-slider__item-title"><?= $subCatName ?></h3>
-                </a>
+            <a class="subcategory-slider__item-link" href="<?= $subCatUrl ?>">
+                <img class="subcategory-slider__item-image" src="<?= $subCatImg ?>"
+                     alt="subcategory image of <?= $subCatName ?>">
+                <h3 class="subcategory-slider__item-title"><?= $subCatName ?></h3>
+            </a>
         </li>
     <?php endforeach; ?>
 </ul>
-
 <script type="text/x-magento-init">
     {
         "#subcategory-slider": {

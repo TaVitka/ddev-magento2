@@ -14,25 +14,25 @@
             <span class="price-label"><?= $block->escapeHtml($block->getDisplayLabel()) ?></span>
         <?php endif; ?>
     <?php endif; ?>
-    <?php if(str_contains($block->getDisplayCurrencySymbol(), '$')): ?>
-    <?php
-    $priceseparator = explode('.', $block->formatCurrency($block->getDisplayValue()));
-    $dollars = $priceseparator[0];
-    $cents = $priceseparator[1];
-    $signDollar = '$';
-    $zeroCents = '00';
-    ?>
-    <span class="price-dollars">
+    <?php if (str_contains($block->getDisplayCurrencySymbol(), '$')): ?>
+        <?php
+        $priceseparator = explode('.', $block->formatCurrency($block->getDisplayValue()));
+        $dollars = $priceseparator[0];
+        $cents = $priceseparator[1];
+        $signDollar = '$';
+        $zeroCents = '00';
+        ?>
+        <span class="price-dollars">
         <?php if (strpos($dollars, $signDollar) !== false) {
             echo str_replace("$", "", $dollars);
         } ?>
-        <?php if(strpos($cents, $zeroCents) !== false):?>
-            <sup class="price-cnt">-</sup>
-        <?php else: ?>
-            <sup class="price-cnt"><?php echo $cents ?></sup>
-        <?php endif; ?>
+            <?php if (strpos($cents, $zeroCents) !== false): ?>
+                <sup class="price-cnt">-</sup>
+            <?php else: ?>
+                <sup class="price-cnt"><?php echo $cents ?></sup>
+            <?php endif; ?>
     </span>
-    <?php elseif(str_contains($block->getDisplayCurrencyCode(), 'EUR')): ?>
+    <?php elseif (str_contains($block->getDisplayCurrencyCode(), 'EUR')): ?>
         <?php
         $priceseparator = explode('.', $block->getDisplayValue());
         $dollars = $priceseparator[0];
@@ -42,7 +42,7 @@
         ?>
         <span class="price-dollars">
             <?php echo $dollars ?>
-            <?php if(strpos($cents, $zeroCents) !== false):?>
+            <?php if (strpos($cents, $zeroCents) !== false): ?>
                 <sup class="price-cnt">-</sup>
             <?php else: ?>
                 <sup class="price-cnt"><?php echo $cents ?></sup>
