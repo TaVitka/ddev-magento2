@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
 }
+
 .main {
     &-subtitle {
         margin-bottom: 15px;
@@ -11,6 +12,7 @@
         color: @title-dark;
     }
 }
+
 .main-sales {
     &__wrapper {
         justify-content: space-between;
@@ -18,35 +20,44 @@
         line-height: 1;
         word-break: break-word;
     }
+
     &__wrapper:first-child {
         background-color: #e2faed;
     }
+
     &__wrapper:nth-child(2) {
         background-color: #aff2d3;
     }
+
     &__wrapper:nth-child(3) {
         background-color: #70e9b4;
     }
+
     &__wrapper:last-child {
         background-color: #aff2d3;
     }
+
     &__item {
         padding: 24px 24px 0 24px;
     }
+
     &__title {
         font-weight: 900;
         font-size: 18px;
         margin-bottom: 5px;
     }
+
     &__desc {
         margin-bottom: 10px;
         font-size: 16px;
         font-weight: 300;
     }
+
     &__pic {
         position: relative;
         padding-left: 25px;
     }
+
     &__arrow {
         position: absolute;
         transform: translateY(50%);
@@ -58,17 +69,18 @@
         padding: 10px 12px;
     }
 }
+
 .main-popular {
     &__top {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+        .flexed();
     }
+
     &__link {
         position: relative;
         font-size: 14px;
         padding-left: 20px;
     }
+
     &__link,
     &__link:hover,
     &__link:visited {
@@ -82,14 +94,25 @@
         left: 0;
     }
 }
+
+.products-widget__item-link {
+    color: @title-dark;
+
+    &:visited {
+        color: @title-dark;
+    }
+}
+
 .main-special {
     &__content--gray {
         color: @title-dark;
     }
+
     &__title {
         margin-bottom: 15px;
     }
-    &__price{
+
+    &__price {
         position: relative;
         display: inline-block;
         padding: 5px 10px;
@@ -101,6 +124,7 @@
         font-size: 30px;
         font-weight: 900;
     }
+
     &__price::after {
         position: absolute;
         top: 0;
@@ -112,69 +136,152 @@
         border-radius: 0 4px 4px 0;
         transform: skewX(-15deg);
     }
-    &__price--dash{
+
+    &__price--dash {
         position: relative;
         left: -5px;
         top: -5px;
         font-size: inherit;
         font-weight: inherit;
     }
+
     &__price--dash::before {
         content: ',';
         position: absolute;
         bottom: 15px;
     }
+
     &__content {
         color: @accentblue;
     }
 }
+
+.main-special__timer {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: @white;
+    padding: 5px 15px;
+    border-radius: 5px;
+    box-shadow: 1px 2px 4px 0 rgba(49, 49, 47, 0.3);
+    color: @accentred-brigth;
+    font-size: 20px;
+    text-transform: capitalize;
+    line-height: 1.5;
+
+    .main-special__timer-title {
+        margin-right: 5px;
+        font-weight: 900;
+    }
+
+    .main-special__timer-img {
+        margin-right: 5px;
+    }
+}
+
 .main-gifts {
     &__wrapper {
         text-align: center;
     }
+
     &__link {
         margin: 0 auto;
         font-size: 16px;
         line-height: 1.5;
     }
+
     &__link,
     &__link:hover,
     &__link:visited {
         color: @title-dark;
     }
 }
+
+// Styles for slider looks
+.main-looks {
+    margin-bottom: 15px;
+}
+.main-looks__wrapper {
+    margin-bottom: 30px;
+
+    .main-looks__item {
+        text-align: center;
+    }
+
+    .main-looks__image {
+        margin-bottom: 10px;
+        border-radius: 50%;
+    }
+
+    .main-looks__link {
+        font-size: 16px;
+        color: @title-dark;
+        line-height: 1.5;
+        &:visited {
+            color: @title-dark;
+        }
+    }
+
+    .slick-next,
+    .slick-prev {
+        border-style: solid;
+        border-color: @accentgrey-dark;
+
+        &::before {
+            font-size: 20px;
+            line-height: 35px;
+            color: @accentblue-light;
+        }
+    }
+    .slick-next {
+        border-width: 0 0 1px 1px;
+    }
+    .slick-prev {
+        border-width: 0 1px 1px 0;
+    }
+}
+// End styles for slider looks
 .main-offers {
     &__wrapper {
         color: @accentblue;
         line-height: 1;
     }
+
     &__title {
         font-size: 36px;
         font-weight: 900;
         letter-spacing: -1px;
         margin-bottom: 5px;
     }
+
     &__desc {
         margin-bottom: 35px;
         font-size: 28px;
         font-weight: 300;
     }
 }
-.main-bottom{
-    &__items *{
+
+.main-bottom {
+    &__items * {
         font-size: 12px;
         line-height: 1;
         color: @title-dark;
     }
+
     &__items {
         margin-bottom: 40px;
     }
-   &__title {
-       font-weight: 700;
-   }
+
+    &__title {
+        font-weight: 700;
+    }
+
     &__link:visited {
         color: @title-dark;
     }
+
     &__link:hover {
         color: @accentblue-light;
         text-decoration: none;

@@ -1,0 +1,41 @@
+.link.wishlist {
+    position: relative;
+    .add.wishlist {
+        color: @white;
+        .counter.qty {
+            position: absolute;
+            border-radius: 50%;
+            width: 24px;
+            background: @accent-yellow;
+            color: @accentblue;
+            top: -7px;
+            right: -7px;
+            text-align: center;
+            height: 24px;
+            line-height: 24px;
+            text-shadow: 0 0 7px #000000;
+            &::before,
+            &::after {
+                content: '';
+            }
+        }
+        .wishlist-wrapper-icon {
+            padding: 19px;
+            border-radius: 50%;
+            position: relative;
+            display: inline-block;
+            background-color: transparent;
+            transition: background-color 0.4s ease-in-out;
+            svg {
+                width: 20px;
+                height: 20px;
+                position: absolute;
+                top: 8px;
+                left: 8px;
+            }
+        }
+        &:hover .wishlist-wrapper-icon {
+            background-color: rgba(255, 255, 255, .25);
+        }
+    }
+}

@@ -2,13 +2,11 @@
     padding: 10px 20px 10px 10px;
     height: 40px;
     text-transform: uppercase;
-    & img {
+    img {
         width: 20px;
     }
-    &__current {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
+    .langs__current {
+        .flexed();
         cursor: pointer;
         background: none;
         border: none;
@@ -21,21 +19,21 @@
             border: none;
             outline: none;
         }
-        &-code {
+        .langs__current-code {
             position: relative;
+            &::after {
+                font-size: 10px;
+                position: absolute;
+                line-height: 22px;
+                color: inherit;
+                content: '\e622';
+                font-family: 'luma-icons';
+                vertical-align: middle;
+                text-align: center;
+                left: 20px;
+            }
         }
-        &-code::after {
-            font-size: 10px;
-            position: absolute;
-            line-height: 22px;
-            color: inherit;
-            content: '\e622';
-            font-family: 'luma-icons';
-            vertical-align: middle;
-            text-align: center;
-            left: 20px;
-        }
-        &-icon {
+        .langs__current-icon {
             width: 20px;
             margin-right: 5px;
         }
@@ -70,18 +68,18 @@
             line-height: 1;
             font-size: 30px;
             padding: 0;
-        }
-        &-close-btn:hover {
-            background: none;
-            border: none;
-            color: #0000A4;
+            &:hover {
+                background: none;
+                border: none;
+                color: #0000A4;
+            }
         }
         &-logo {
             width: 170px;
             margin-bottom: 20px;
-        }
-        &-logo img {
-            width: inherit;
+            img {
+                width: inherit;
+            }
         }
         &-subtitle {
             font-size: 22px;
@@ -108,16 +106,16 @@
             align-items: center;
             text-transform: initial;
             color: #03031a;
-        }
-        &-link:hover {
-            text-decoration: none;
-            color: #03031a;
-        }
-        &-link:visited {
-            color: #03031a;
+            &:hover {
+                text-decoration: none;
+                color: #03031a;
+            }
+            &:visited {
+                color: #03031a;
+            }
         }
         &-code {
-           margin-right: 10px;
+            margin-right: 10px;
         }
     }
 }
@@ -134,12 +132,11 @@
     z-index: 0;
     pointer-events: none;
     backdrop-filter: blur(0px) brightness(1);
+    &.active {
+        pointer-events: all;
+        opacity: 1;
+        z-index: 500;
+        backdrop-filter: blur(2px) brightness(0.5);
+    }
 }
-#langs-overlay.active,
-#sorter-overlay.active,
-.seller-overlay.active {
-    pointer-events: all;
-    opacity: 1;
-    z-index: 500;
-    backdrop-filter: blur(2px) brightness(0.5);
- }
+

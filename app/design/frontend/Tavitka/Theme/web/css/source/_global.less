@@ -1,9 +1,6 @@
 body {
  color: @title-dark;
 }
-a[class]:visited {
- color: inherit;
-}
 .page-wrapper {
         #maincontent,
         .product-image-wrapper,
@@ -25,3 +22,111 @@ a[class]:visited {
     margin: 0 auto;
     width: 100%;
 }
+// Styles for slick-slider arrows
+.slick-next,
+.slick-prev {
+    border-radius: 5px;
+    width: 35px;
+    height: 35px;
+    position: absolute;
+    bottom: 0;
+    background: @white;
+    &:hover,
+    &::before {
+        background: @white;
+        color: @accentblue;
+    }
+    &::before {
+        color: @accentblue;
+        font-family: 'luma-icons';
+        background-color: @white;
+        position: absolute;
+        right: 0;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        padding: 0;
+    }
+    &:hover::before {
+        color: @accentblue;
+    }
+}
+.slick-next {
+    right: 0;
+    &::before {
+        content: "\e608";
+    }
+}
+.slick-prev {
+    left: 0;
+    &::before {
+        content: '\e617';
+    }
+}
+// End styles for slick-slider arrows
+
+// Start styles for icon add-to-wishlist
+.products-widget__item-wishlist-link {
+    svg {
+        padding: 5px;
+        width: 34px;
+        border: 2px solid @white;
+        background-color: @white;
+        fill: @accentblue-light;
+        transition: all 0.3s ease-in-out;
+    }
+    &:hover svg {
+        border-color: @accentblue-light;
+    }
+    &:active svg {
+        fill: @white;
+        background-color: @accentblue-light;
+        border-color: @accentblue-light;
+    }
+}
+// End styles for icon add-to-wishlist
+
+// Start styles for product-item__advr information
+.product-item__advr {
+    font-size: 12px;
+    line-height: 1.5;
+    .product-item__advr-top {
+        color: @accentgreen;
+        margin-bottom: 15px;
+    }
+    .product-item__advr-item {
+        display: inline-block;
+        margin-bottom: 5px;
+        & + & {
+            margin-left: 5px;
+        }
+    }
+    .product-item__advr-title {
+        display: inline-block;
+        padding: 1px 8px;
+        border: 1px solid @accentgreen;
+        font-weight: 700;
+    }
+    .product-item__advr-subtitle {
+        font-size: 14px;
+        font-weight: 700;
+        color: #01ac3a;
+    }
+    .product-item__advr-info {
+        fill: @accentgreen;
+    }
+    .product-item__advr-bottom {
+        margin-bottom: 15px;
+    }
+    .product-item__advr-seller {
+        word-break: break-word;
+    }
+    .product-item__advr-link {
+        color: @accentblue-light;
+        &:hover,
+        &:visited {
+            color: @accentblue-light;
+        }
+    }
+}
+// End styles for product-item__advr information
